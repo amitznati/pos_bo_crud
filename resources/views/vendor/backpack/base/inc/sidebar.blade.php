@@ -23,6 +23,7 @@
               <li><a href="{{ url('admin/product') }}"><i class="fa fa-tag"></i> <span>Products</span></a></li>
               <li><a href="{{ url('admin/department') }}"><i class="fa fa-tag"></i> <span>Department</span></a></li>
               <li><a href="{{ url('admin/group') }}"><i class="fa fa-tag"></i> <span>Group</span></a></li>
+              <li><a href="{{ url('admin/customer') }}"><i class="fa fa-tag"></i> <span>Customer</span></a></li>
             </ul>
           </li>
         <li class="treeview">

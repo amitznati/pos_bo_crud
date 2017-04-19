@@ -5,71 +5,40 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\GroupRequest as StoreRequest;
-use App\Http\Requests\GroupRequest as UpdateRequest;
+use App\Http\Requests\CustomerRequest as StoreRequest;
+use App\Http\Requests\CustomerRequest as UpdateRequest;
 
-class GroupCrudController extends CrudController
+use App\Models\Person;
+use App\Models\Address;
+
+class CustomerCrudController extends CrudController
 {
 
     public function setUp()
     {
 
         /*
-		|--------------------------------------------------------------------------
-		| BASIC CRUD INFORMATION
-		|--------------------------------------------------------------------------
-		*/
-        $this->crud->setModel("App\Models\Group");
-        $this->crud->setRoute("admin/group");
-        $this->crud->setEntityNameStrings('group', 'groups');
+        |--------------------------------------------------------------------------
+        | BASIC CRUD INFORMATION
+        |--------------------------------------------------------------------------
+        */
+        $this->crud->setModel('App\Models\Customer');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/customer');
+        $this->crud->setEntityNameStrings('customer', 'customers');
 
         /*
-		|--------------------------------------------------------------------------
-		| BASIC CRUD INFORMATION
-		|--------------------------------------------------------------------------
-		*/
-        $all_fields = [
-            [
-                'name' => 'name', // The db column name
-                'label' => "Group Name", // Table column heading
-                'type' => 'Text'
-            ],
-            [
-               // 1-n relationship
-               'label' => "Department", // Table column heading
-               'type' => "select",
-               'name' => 'department_id', // the column that contains the ID of that connected entity;
-               'entity' => 'department', // the method that defines the relationship in your Model
-               'attribute' => "name", // foreign key attribute that is shown to user
-               'model' => "App\Models\Department", // foreign key model
-            ],
+        |--------------------------------------------------------------------------
+        | BASIC CRUD INFORMATION
+        |--------------------------------------------------------------------------
+        */
 
-        ];
-
-        $all_columns = [
-            [
-                'name' => 'name', // The db column name
-                'label' => "Group Name", // Table column heading
-                'type' => 'Text'
-            ],
-            [
-               // 1-n relationship
-               'label' => "Department", // Table column heading
-               'type' => "select",
-               'name' => 'department_id', // the column that contains the ID of that connected entity;
-               'entity' => 'department', // the method that defines the relationship in your Model
-               'attribute' => "name", // foreign key attribute that is shown to user
-               'model' => "App\Models\Department", // foreign key model
-            ],
-        ];
-
-        $this->crud->addFields($all_fields, 'both');
-        $this->crud->addColumns($all_columns);
-        //$this->crud->setFromDb();
+        $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
+        $this->crud->addFields(Person::$create_fields, 'both');
+        $this->crud->addFields(Address::$create_fields, 'both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
@@ -126,27 +95,30 @@ class GroupCrudController extends CrudController
         // $this->crud->addClause('whereHas', 'posts', function($query) {
         //     $query->activePosts();
         // });
+        // $this->crud->addClause('withoutGlobalScopes');
+        // $this->crud->addClause('withoutGlobalScope', VisibleScope::class);
         // $this->crud->with(); // eager load relationships
         // $this->crud->orderBy();
         // $this->crud->groupBy();
         // $this->crud->limit();
     }
 
-	public function store(StoreRequest $request)
-	{
-		// your additional operations before save here
-        $redirect_location = parent::storeCrud();
+    public function store(StoreRequest $request)
+    {
+        xdebug_break();
+        // your additional operations before save here
+        $redirect_location = null;//parent::storeCrud();
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
-	}
+    }
 
-	public function update(UpdateRequest $request)
-	{
-		// your additional operations before save here
+    public function update(UpdateRequest $request)
+    {
+        // your additional operations before save here
         $redirect_location = parent::updateCrud();
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
-	}
+    }
 }

@@ -18,7 +18,7 @@ class CreateProductTable extends Migration
             $table->string('name', 50);
             $table->integer('dept_id')->unsigned();
             $table->integer('group_id')->unsigned();
-            $table->integer('vendor_id')->unsigned()->nullable()->default(null);
+            $table->integer('vandor_id')->unsigned()->nullable()->default(null);
             $table->decimal('sale_price', 19, 4);
             $table->decimal('bay_price', 19, 4)->nullable()->default(null);
             $table->string('barcode')->nullable()->default(null);

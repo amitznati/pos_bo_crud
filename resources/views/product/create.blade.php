@@ -47,8 +47,36 @@
 		  {!! Form::close() !!}
 	</div>
 </div>
-
 <script type="text/javascript">
-	 mycrud = <?php echo $crud; ?>; 
+document.addEventListener("DOMContentLoaded", function(event) { 
+	
+   departments = {!! $departments !!}
+    ddDept = $('select[name="dept_id"]');
+    ddgroup = $('select[name="group_id"]');
+
+    ddDept.on('change', function() { 
+        setGroups(ddDept.val())
+    });
+
+    function setGroups(dept_id)
+    {
+        ddgroup.empty(); 
+        if(window.location.pathname == '/products/' || window.location.pathname == '/products')
+        {
+            ddgroup.prepend("<option value='0'>All</option>").val('0');
+        }
+        departments.forEach(function(department){
+            if(dept_id == department.id)
+                department.groups.forEach(function(group){
+                    var option = $('<option></option>').attr("value", group.id).text(group.name);
+                ddgroup.append(option);
+
+            });                                
+        }); 
+    }
+
+});
+
+	
 </script>
 @endsection

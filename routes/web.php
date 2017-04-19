@@ -30,4 +30,5 @@ Route::group([
     CRUD::resource('product', 'ProductCrudController');
     CRUD::resource('department', 'DepartmentCrudController');
     CRUD::resource('group', 'GroupCrudController');
+    CRUD::resource('customer', 'CustomerCrudController');
 });

@@ -179,6 +179,7 @@ return [
         Backpack\PermissionManager\PermissionManagerServiceProvider::class,
         //
 
+        //Orangehill\Iseed\IseedServiceProvider::class,
         /*
          * Application Service Providers...
          */
