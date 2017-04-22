@@ -21,40 +21,69 @@ class Person extends Model
 
     public static $create_fields = [
         [
-            'name' => 'first_name', // The db column name
-            'label' => "First Name", // Table column heading
+            'name' => 'first_name', 
+            'label' => "First Name", 
             'type' => 'Text'
         ],
         [
-            'name' => 'last_name', // The db column name
-            'label' => "Last Name", // Table column heading
+            'name' => 'last_name', 
+            'label' => "Last Name", 
             'type' => 'Text'
         ],
         [
-            'name' => 'full_name', // The db column name
-            'label' => "Full Name", // Table column heading
+            'name' => 'full_name', 
+            'label' => "Full Name", 
             'type' => 'Text'
         ],
         [
-            'name' => 'birthday', // The db column name
-            'label' => "Birthday", // Table column heading
+            'name' => 'birthday', 
+            'label' => "Birthday", 
             'type' => 'date'
         ],
         [
-            'name' => 'phone', // The db column name
-            'label' => "Phone Number", // Table column heading
+            'name' => 'phone', 
+            'label' => "Phone Number", 
             'type' => 'number'
         ],
         [
-            'name' => 'email', // The db column name
-            'label' => "Email", // Table column heading
+            'name' => 'email', 
+            'label' => "Email", 
             'type' => 'email'
         ],
         [
-            'name' => 'identifier', // The db column name
-            'label' => "Identifier", // Table column heading
+            'name' => 'identifier', 
+            'label' => "Identifier", 
             'type' => 'Text'
         ],
+
+    ];
+
+    public static $show_fields = [
+        [
+            'function_name' => 'personObj', 
+            'label' => "First Name", 
+            'type' => 'model_function_attribute',
+            'attribute' => 'first_name'
+        ],
+        [
+            'function_name' => 'personObj', 
+            'label' => "Last Name", 
+            'type' => 'model_function_attribute',
+            'attribute' => 'last_name'
+        ],
+        [
+            'function_name' => 'personObj', 
+            'label' => "Birthday", 
+            'type' => 'model_function_attribute',
+            'attribute' => 'birthday'
+        ],
+        [
+            'function_name' => 'personObj', 
+            'label' => "Email", 
+            'type' => 'model_function_attribute',
+            'attribute' => 'email'
+        ],
+
 
     ];
     protected $dates = ['deleted_at'];

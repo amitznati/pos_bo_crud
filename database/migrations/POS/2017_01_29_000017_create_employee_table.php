@@ -15,6 +15,7 @@ class CreateEmployeeTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->increments('id');
+            $table->softDeletes();
         });
     }
 
