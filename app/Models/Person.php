@@ -83,6 +83,12 @@ class Person extends Model
             'type' => 'model_function_attribute',
             'attribute' => 'email'
         ],
+        [
+            'function_name' => 'personObj', 
+            'label' => "Phone", 
+            'type' => 'model_function_attribute',
+            'attribute' => 'phone'
+        ],
 
 
     ];

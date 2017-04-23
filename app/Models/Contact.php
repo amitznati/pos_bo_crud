@@ -9,75 +9,45 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Contact extends Model
 {
     use CrudTrait;
-	use SoftDeletes;
+    use SoftDeletes;
 
      /*
-	|--------------------------------------------------------------------------
-	| GLOBAL VARIABLES
-	|--------------------------------------------------------------------------
-	*/
-	public $table = 'contact';
+    |--------------------------------------------------------------------------
+    | GLOBAL VARIABLES
+    |--------------------------------------------------------------------------
+    */
     
-    const CREATED_AT = 'created_at';
-    const UPDATED_AT = 'updated_at';
-
-
-    protected $dates = ['deleted_at'];
-
-
-    public $fillable = [
-        'first_name',
-        'last_name',
-        'full_name',
-        'birthday',
-        'phone',
-        'email',
-        'address_id',
-        'identifier',
-    ];
-
-    /**
-     * The attributes that should be casted to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'id' => 'integer',
-        'first_name' => 'string',
-        'last_name' => 'string',
-        'full_name' => 'string',
-        'birthday' => 'date',
-        'phone' => 'string',
-        'email' => 'string',
-        'address_id' => 'integer',
-        'identifier' => 'string',
-    ];
-
-    //protected $table = 'contacts';
-    //protected $primaryKey = 'id';
-    // public $timestamps = false;
-    // protected $guarded = ['id'];
+    
+    protected $table = 'contacts';
+    protected $primaryKey = 'id';
+    public $timestamps = false;
+    protected $guarded = ['id'];
     // protected $fillable = [];
     // protected $hidden = [];
-    // protected $dates = [];
+    protected $dates = ['deleted_at'];
 
     /*
-	|--------------------------------------------------------------------------
-	| FUNCTIONS
-	|--------------------------------------------------------------------------
-	*/
-
-    /*
-	|--------------------------------------------------------------------------
-	| RELATIONS
-	|--------------------------------------------------------------------------
-	*/
-	/**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
-    public function address()
+    |--------------------------------------------------------------------------
+    | FUNCTIONS
+    |--------------------------------------------------------------------------
+    */
+    public function personObj()
     {
-        return $this->morphOne('App\Models\Address','addressable');
+        return $this->person;
+    }
+    /*
+    |--------------------------------------------------------------------------
+    | RELATIONS
+    |--------------------------------------------------------------------------
+    */
+    public function person()
+    {
+        return $this->morphOne('App\Models\Person','personable');
+    }
+
+    public function vendors()
+    {
+        return $this->belongsToMany(\App\Models\Vendor::class, 'rel_vandor_contact');
     }
     /*
 	|--------------------------------------------------------------------------

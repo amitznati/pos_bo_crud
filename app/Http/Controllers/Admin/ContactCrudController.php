@@ -7,6 +7,9 @@ use Backpack\CRUD\app\Http\Controllers\CrudController;
 // VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\ContactRequest as StoreRequest;
 use App\Http\Requests\ContactRequest as UpdateRequest;
+use App\Models\Contact;
+use App\Models\Person;
+use App\Models\Address;
 
 class ContactCrudController extends CrudController
 {
@@ -15,21 +18,21 @@ class ContactCrudController extends CrudController
     {
 
         /*
-		|--------------------------------------------------------------------------
-		| BASIC CRUD INFORMATION
-		|--------------------------------------------------------------------------
-		*/
-        $this->crud->setModel("App\Models\Contact");
-        $this->crud->setRoute("admin/contact");
+        |--------------------------------------------------------------------------
+        | BASIC CRUD INFORMATION
+        |--------------------------------------------------------------------------
+        */
+        $this->crud->setModel('App\Models\Contact');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/contact');
         $this->crud->setEntityNameStrings('contact', 'contacts');
 
         /*
-		|--------------------------------------------------------------------------
-		| BASIC CRUD INFORMATION
-		|--------------------------------------------------------------------------
-		*/
+        |--------------------------------------------------------------------------
+        | BASIC CRUD INFORMATION
+        |--------------------------------------------------------------------------
+        */
 
-        $this->crud->setFromDb();
+        //$this->crud->setFromDb();
 
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
@@ -37,8 +40,22 @@ class ContactCrudController extends CrudController
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
+        // ----------CUSTOM VIEWS
+        $this->crud->setShowView('people/show');
+        $this->crud->setEditView('people/edit');
+        //$this->crud->setCreateView('your-view');
+        $this->crud->setCreateView('people/create');
+        //$this->crud->setListView('your-view');
+        //$this->crud->setReorderView('your-view');
+        //$this->crud->setRevisionsView('your-view');
+        //$this->crud->setRevisionsTimelineView('your-view');
+        //$this->crud->setDetailsRowView('your-view');
+
+
+
         // ------ CRUD COLUMNS
         // $this->crud->addColumn(); // add a single column, at the end of the stack
+         $this->crud->addColumns(Person::$show_fields); // add multiple columns, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
@@ -54,7 +71,7 @@ class ContactCrudController extends CrudController
         // $this->crud->removeButtonFromStack($name, $stack);
 
         // ------ CRUD ACCESS
-        // $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete']);
+         $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete','show']);
         // $this->crud->denyAccess(['list', 'create', 'update', 'reorder', 'delete']);
 
         // ------ CRUD REORDER
@@ -90,27 +107,61 @@ class ContactCrudController extends CrudController
         // $this->crud->addClause('whereHas', 'posts', function($query) {
         //     $query->activePosts();
         // });
+        // $this->crud->addClause('withoutGlobalScopes');
+        // $this->crud->addClause('withoutGlobalScope', VisibleScope::class);
         // $this->crud->with(); // eager load relationships
         // $this->crud->orderBy();
         // $this->crud->groupBy();
         // $this->crud->limit();
     }
 
-	public function store(StoreRequest $request)
-	{
-		// your additional operations before save here
-        $redirect_location = parent::storeCrud();
-        // your additional operations after save here
-        // use $this->data['entry'] or $this->crud->entry
-        return $redirect_location;
-	}
+    public function store(StoreRequest $request)
+    {
+        $input = $request->all();
+        
+        $this->validate($request,array(
+                'first_name'       => 'required|max:50|min:2',
+                'last_name'        => 'required|max:50|min:2',
+                'identifier'       => 'required|min:4|max:50|unique:persons,identifier',
+        ));
+        
+        //Customer
+        $contact = new Contact();
+        $contact->save();
+        //Person
+        $person = new Person($input);
+        $person->personable()->associate($contact);
+        $person->save();
+        //Address
+        $address = new Address($input);       
+        $address->addressable()->associate($person);
+        $address->save();
 
-	public function update(UpdateRequest $request)
-	{
-		// your additional operations before save here
+        \Alert::success(trans('backpack::crud.insert_success'))->flash();
+
+        return redirect(route('crud.contact.index'));
+    }
+
+    public function update(UpdateRequest $request)
+    {
+        // your additional operations before save here
         $redirect_location = parent::updateCrud();
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
-	}
+    }
+
+
+    public function show($id)
+    {
+        $this->crud->hasAccessOrFail('show');
+
+        // get the info for that entry
+        $this->data['entry'] = $this->crud->getEntry($id);
+        $this->data['crud'] = $this->crud;
+        $this->data['title'] = trans('backpack::crud.preview').' '.$this->crud->entity_name;
+
+        // load the view from /resources/views/vendor/backpack/crud/ if it exists, otherwise load the one in the package
+        return view($this->crud->getShowView(), $this->data);
+    }
 }

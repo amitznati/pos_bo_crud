@@ -5,14 +5,10 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\CustomerRequest as StoreRequest;
-use App\Http\Requests\CustomerRequest as UpdateRequest;
-use App\Models\Customer;
-use App\Models\Person;
-use App\Models\Address;
+use App\Http\Requests\EmployeeRequest as StoreRequest;
+use App\Http\Requests\EmployeeRequest as UpdateRequest;
 
-
-class CustomerCrudController extends CrudController
+class EmployeeCrudController extends CrudController
 {
 
     public function setUp()
@@ -23,9 +19,9 @@ class CustomerCrudController extends CrudController
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel('App\Models\Customer');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/customer');
-        $this->crud->setEntityNameStrings('customer', 'customers');
+        $this->crud->setModel('App\Models\Employee');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/employee');
+        $this->crud->setEntityNameStrings('employee', 'employees');
 
         /*
         |--------------------------------------------------------------------------
@@ -33,7 +29,7 @@ class CustomerCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        //$this->crud->setFromDb();
+        $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
@@ -41,22 +37,8 @@ class CustomerCrudController extends CrudController
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
-        // ----------CUSTOM VIEWS
-        $this->crud->setShowView('people/show');
-        $this->crud->setEditView('people/edit');
-        //$this->crud->setCreateView('your-view');
-        $this->crud->setCreateView('people/create');
-        //$this->crud->setListView('your-view');
-        //$this->crud->setReorderView('your-view');
-        //$this->crud->setRevisionsView('your-view');
-        //$this->crud->setRevisionsTimelineView('your-view');
-        //$this->crud->setDetailsRowView('your-view');
-
-
-
         // ------ CRUD COLUMNS
         // $this->crud->addColumn(); // add a single column, at the end of the stack
-         $this->crud->addColumns(Person::$show_fields); // add multiple columns, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
@@ -72,7 +54,7 @@ class CustomerCrudController extends CrudController
         // $this->crud->removeButtonFromStack($name, $stack);
 
         // ------ CRUD ACCESS
-         $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete','show']);
+        // $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete']);
         // $this->crud->denyAccess(['list', 'create', 'update', 'reorder', 'delete']);
 
         // ------ CRUD REORDER
@@ -118,29 +100,11 @@ class CustomerCrudController extends CrudController
 
     public function store(StoreRequest $request)
     {
-        $input = $request->all();
-        
-        $this->validate($request,array(
-                'first_name'       => 'required|max:50|min:2',
-                'last_name'        => 'required|max:50|min:2',
-                'identifier'       => 'required|min:4|max:50|unique:persons,identifier',
-        ));
-        
-        //Customer
-        $customer = new Customer();
-        $customer->save();
-        //Person
-        $person = new Person($input);
-        $person->personable()->associate($customer);
-        $person->save();
-        //Address
-        $address = new Address($input);       
-        $address->addressable()->associate($person);
-        $address->save();
-
-        \Alert::success(trans('backpack::crud.insert_success'))->flash();
-
-        return redirect(route('crud.customer.index'));
+        // your additional operations before save here
+        $redirect_location = parent::storeCrud();
+        // your additional operations after save here
+        // use $this->data['entry'] or $this->crud->entry
+        return $redirect_location;
     }
 
     public function update(UpdateRequest $request)
@@ -150,19 +114,5 @@ class CustomerCrudController extends CrudController
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
-    }
-
-
-    public function show($id)
-    {
-        $this->crud->hasAccessOrFail('show');
-
-        // get the info for that entry
-        $this->data['entry'] = $this->crud->getEntry($id);
-        $this->data['crud'] = $this->crud;
-        $this->data['title'] = trans('backpack::crud.preview').' '.$this->crud->entity_name;
-
-        // load the view from /resources/views/vendor/backpack/crud/ if it exists, otherwise load the one in the package
-        return view($this->crud->getShowView(), $this->data);
     }
 }

@@ -2,10 +2,10 @@
 	var first = $("input[name='first_name']");
 	var last = $("input[name='last_name']");
 	var full = $("input[name='full_name']");
-	first.keyup(function(){
+	first.change(function(){
 		changeFull();
 	})
-	last.keyup(function(){
+	last.change(function(){
 		changeFull();
 	})
 	function changeFull()
