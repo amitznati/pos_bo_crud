@@ -61,6 +61,7 @@
               <li><a href="{{ url('admin/user') }}"><i class="fa fa-user"></i> <span>Users</span></a></li>
               <li><a href="{{ url('admin/role') }}"><i class="fa fa-group"></i> <span>Roles</span></a></li>
               <li><a href="{{ url('admin/permission') }}"><i class="fa fa-key"></i> <span>Permissions</span></a></li>
+			        <li><a href="{{ url('admin/salerytype') }}"><i class="fa fa-key"></i> <span>Salery Types</span></a></li>
             </ul>
           </li>
           <!-- ======================================= -->

@@ -32,4 +32,5 @@ Route::group([
     CRUD::resource('group', 'GroupCrudController');
     CRUD::resource('customer', 'CustomerCrudController');
     CRUD::resource('contact', 'ContactCrudController');
+    CRUD::resource('salerytype', 'SaleryTypeCrudController');
 });
