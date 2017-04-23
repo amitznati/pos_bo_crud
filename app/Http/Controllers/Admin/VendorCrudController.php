@@ -7,6 +7,7 @@ use Backpack\CRUD\app\Http\Controllers\CrudController;
 // VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\VendorRequest as StoreRequest;
 use App\Http\Requests\VendorRequest as UpdateRequest;
+use App\Models\Contact;
 
 class VendorCrudController extends CrudController
 {
@@ -28,13 +29,19 @@ class VendorCrudController extends CrudController
 		| BASIC CRUD INFORMATION
 		|--------------------------------------------------------------------------
 		*/
+        $show_fields = [
+            [
+                'name' => 'company_name', // The db column name
+                'label' => "Company Name", // Table column heading
+                'type' => 'Text'
+            ],
+        ];
 
-        $this->crud->setFromDb();
-
+        //$this->crud->setFromDb();
+        $this->crud->setCreateView('vendors/create');
         // ------ CRUD FIELDS
-        // $this->crud->addField($options, 'update/create/both');
+        $this->crud->addColumns($show_fields);
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
-        // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
@@ -113,4 +120,19 @@ class VendorCrudController extends CrudController
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
 	}
+
+    public function create()
+    {
+        $this->crud->hasAccessOrFail('create');
+        
+        // prepare the fields you need to show
+        $this->data['crud'] = $this->crud;
+        $this->data['saveAction'] = $this->getSaveAction();
+        $this->data['fields'] = $this->crud->getCreateFields();
+        $this->data['title'] = trans('backpack::crud.add').' '.$this->crud->entity_name;
+        $this->data['contacts'] = Contact::all();
+        //xdebug_break();
+        // load the view from /resources/views/vendor/backpack/crud/ if it exists, otherwise load the one in the package
+        return view($this->crud->getCreateView(), $this->data);
+    }
 }

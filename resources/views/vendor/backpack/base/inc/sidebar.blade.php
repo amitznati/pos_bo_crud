@@ -21,8 +21,9 @@
             <a href="#"><i class="fa fa-group"></i> <span>Catalog</span> <i class="fa fa-angle-{!! $right !!} pull-{!! $right !!}"></i></a>
             <ul class="treeview-menu">
               <li><a href="{{ url('admin/product') }}"><i class="fa fa-tag"></i> <span>Products</span></a></li>
-              <li><a href="{{ url('admin/department') }}"><i class="fa fa-tag"></i> <span>Department</span></a></li>
-              <li><a href="{{ url('admin/group') }}"><i class="fa fa-tag"></i> <span>Group</span></a></li>
+              <li><a href="{{ url('admin/department') }}"><i class="fa fa-tag"></i> <span>Departments</span></a></li>
+              <li><a href="{{ url('admin/group') }}"><i class="fa fa-tag"></i> <span>Groups</span></a></li>
+              <li><a href="{{ url('admin/vendor') }}"><i class="fa fa-tag"></i> <span>Vendors</span></a></li>
             </ul>
           </li>
           <li class="treeview">
