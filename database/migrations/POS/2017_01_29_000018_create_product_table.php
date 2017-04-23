@@ -39,7 +39,7 @@ class CreateProductTable extends Migration
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
-            $table->foreign('vandor_id', 'FK_Product_Vendor')
+            $table->foreign('vendor_id', 'FK_Product_Vendor')
                 ->references('id')->on('vendors')
                 ->onDelete('no action')
                 ->onUpdate('no action');
