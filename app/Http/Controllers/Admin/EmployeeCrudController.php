@@ -7,6 +7,13 @@ use Backpack\CRUD\app\Http\Controllers\CrudController;
 // VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\EmployeeRequest as StoreRequest;
 use App\Http\Requests\EmployeeRequest as UpdateRequest;
+use App\Models\Person;
+use App\Models\Employee;
+use App\Models\Address;
+use App\Models\Role;
+use App\Models\Permission;
+use App\Models\SaleryType;
+use App\Models\EmployeeSalery;
 
 class EmployeeCrudController extends CrudController
 {
@@ -29,9 +36,13 @@ class EmployeeCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+        //$this->crud->setFromDb();
+        $this->crud->setCreateView('employees/create');
+        $this->crud->setEditView('employees/edit');
+        $this->crud->setShowView('employees/show');
 
         // ------ CRUD FIELDS
+        $this->crud->addColumns(Person::$show_fields);
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
@@ -54,7 +65,7 @@ class EmployeeCrudController extends CrudController
         // $this->crud->removeButtonFromStack($name, $stack);
 
         // ------ CRUD ACCESS
-        // $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete']);
+        $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete','show']);
         // $this->crud->denyAccess(['list', 'create', 'update', 'reorder', 'delete']);
 
         // ------ CRUD REORDER
@@ -101,18 +112,144 @@ class EmployeeCrudController extends CrudController
     public function store(StoreRequest $request)
     {
         // your additional operations before save here
-        $redirect_location = parent::storeCrud();
-        // your additional operations after save here
-        // use $this->data['entry'] or $this->crud->entry
-        return $redirect_location;
+        $this->validate($request,array(
+                'first_name'       => 'required|max:50|min:2',
+                'last_name'        => 'required|max:50|min:2',
+                'identifier'       => 'required|min:4|max:50|unique:persons,identifier',
+                'role'             => 'required|size:1',
+                'amount'           => 'required|numeric|between:0,999999.99',
+        ));
+
+        $input = $request->all();
+        //xdebug_break();
+        //Employee
+        $employee = new Employee();     
+        $employee->save();
+
+        //Role
+        $employee->roles()->sync($request->role, false);
+
+        //Permissions
+        if($request->permissions)
+            $employee->permissions()->sync($request->permissions, false);
+
+        //Salery
+        $employee_salery = new EmployeeSalery($input);
+        $employee_salery->employee()->associate($employee);
+        $employee_salery->save();
+
+        //Person
+        $person = new Person($input);
+        $person->personable()->associate($employee);
+        $person->save();
+
+        //Address
+        $address = new Address($input);       
+        $address->addressable()->associate($person);
+        $address->save();
+
+        \Alert::success(trans('Employee saved successfully!'))->flash();
+
+        return $this->performSaveAction($employee->id);
     }
 
     public function update(UpdateRequest $request)
     {
+        $employee = $this->crud->getEntry($request->id);
         // your additional operations before save here
-        $redirect_location = parent::updateCrud();
-        // your additional operations after save here
-        // use $this->data['entry'] or $this->crud->entry
-        return $redirect_location;
+        $input = $request->all();
+        $identifier_validation = '';
+        $amount_validation = '';
+        if($employee->person->identifier != $request->identifier)
+        {
+            $identifier_validation = 'required|min:4|max:50|unique:persons,identifier';
+        }
+        if($request->add_salery == 'checked')
+        {
+        	$amount_validation = 'required|numeric|between:0,999999.99';
+        }
+
+        $this->validate($request,array(
+                'first_name'       => 'required|max:50|min:2',
+                'last_name'        => 'required|max:50|min:2',
+                'identifier'       => $identifier_validation,
+                'role'             => 'required|size:1',
+                'amount'           => $amount_validation,
+        ));
+        
+        //Role
+        if(!$employee->hasRole(Role::find($request->role[0])->name))
+        {
+            $employee->roles()->detach();
+            $employee->roles()->sync($request->role, false);
+        }
+        
+
+        //Permissions
+        if($request->permissions)
+        {
+            $employee->permissions()->detach();
+            $employee->permissions()->sync($request->permissions, false);
+        }
+        
+        //Salery
+        if($request->add_salery == 'checked')
+        {
+            $employee->employeeSaleries()->delete();
+            $employee_salery = new EmployeeSalery($input);
+            $employee_salery->employee()->associate($employee);
+            $employee_salery->save();
+        }
+
+        //Person
+        $employee->person->update($input);
+
+        //Address
+        $employee->person->address->update($input);
+
+        \Alert::success(trans('backpack::crud.update_success'))->flash();
+
+        $this->setSaveAction();
+
+        return $this->performSaveAction();
+    }
+
+    public function create()
+    {
+        $this->crud->hasAccessOrFail('create');
+        
+        // prepare the fields you need to show
+        $this->data['crud'] = $this->crud;
+        $this->data['saveAction'] = $this->getSaveAction();
+        $this->data['fields'] = $this->crud->getCreateFields();
+        $this->data['title'] = trans('backpack::crud.add').' '.$this->crud->entity_name;
+        $this->data['roles'] = Role::all()->load('permissions');
+        $this->data['permissions'] = Permission::all();
+        $this->data['saleries'] = SaleryType::all()->pluck('name','id');
+        //xdebug_break();
+        // load the view from /resources/views/vendor/backpack/crud/ if it exists, otherwise load the one in the package
+        return view($this->crud->getCreateView(), $this->data);
+    }
+
+    public function edit($id)
+    {
+        $this->crud->hasAccessOrFail('update');
+
+        // get the info for that entry
+        $this->data['entry'] = $this->crud->getEntry($id);
+        $this->data['crud'] = $this->crud;
+        $this->data['saveAction'] = $this->getSaveAction();
+        $this->data['fields'] = $this->crud->getUpdateFields($id);
+        $this->data['title'] = trans('backpack::crud.edit').' '.$this->crud->entity_name;
+
+        $this->data['id'] = $id;
+        $this->data['employee'] = $this->data['entry']->load('employeeSaleries');
+        $this->data['person'] = $this->data['employee']->person;
+        $this->data['roles'] = Role::all()->load('permissions');
+        $this->data['permissions'] = Permission::all();
+        $this->data['saleries'] = SaleryType::all()->pluck('name','id');
+
+        // load the view from /resources/views/vendor/backpack/crud/ if it exists, otherwise load the one in the package
+        return view($this->crud->getEditView(), $this->data);
     }
 }
