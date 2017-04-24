@@ -29,8 +29,9 @@
           <li class="treeview">
             <a href="#"><i class="fa fa-wrench"></i> <span>People</span> <i class="fa fa-angle-{{$right}} pull-{{$right}}"></i></a>
             <ul class="treeview-menu">
-              <li><a href="{{ url('admin/customer') }}"><i class="fa fa-tag"></i> <span>Customer</span></a></li>
-              <li><a href="{{ url('admin/contact') }}"><i class="fa fa-tag"></i> <span>Contact</span></a></li>
+              <li><a href="{{ url('admin/employee') }}"><i class="fa fa-tag"></i> <span>Employees</span></a></li>
+              <li><a href="{{ url('admin/customer') }}"><i class="fa fa-tag"></i> <span>Customers</span></a></li>
+              <li><a href="{{ url('admin/contact') }}"><i class="fa fa-tag"></i> <span>Contacts</span></a></li> 
             </ul>
           </li>
         <li class="treeview">

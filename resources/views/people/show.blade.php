@@ -15,7 +15,12 @@
                         $address = $entry->person->address; 
                       ?>
                     @include('people.show_fields')
-                    <a href="{{ url($crud->route) }}" class="btn btn-default">Back</a>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <a href="{{ url($crud->route) }}" class="btn btn-default">Back</a>
+                            <a href="{{ url($crud->route.'/'.$entry->getKey().'/edit') }}" class='btn btn-default'>Edit <i class="glyphicon glyphicon-edit"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

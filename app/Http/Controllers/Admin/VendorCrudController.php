@@ -8,6 +8,7 @@ use Backpack\CRUD\app\Http\Controllers\CrudController;
 use App\Http\Requests\VendorRequest as StoreRequest;
 use App\Http\Requests\VendorRequest as UpdateRequest;
 use App\Models\Contact;
+use App\Models\Address;
 
 class VendorCrudController extends CrudController
 {
@@ -35,10 +36,20 @@ class VendorCrudController extends CrudController
                 'label' => "Company Name", // Table column heading
                 'type' => 'Text'
             ],
+            [
+               // n-n relationship (with pivot table)
+               'label' => "Contacts", // Table column heading
+               'type' => "select_multiple",
+               'name' => 'contacts', // the method that defines the relationship in your Model
+               'entity' => 'contacts', // the method that defines the relationship in your Model
+               'attribute' => "person.full_name", // foreign key attribute that is shown to user
+               'model' => "App\Models\Contact", // foreign key model
+            ],
         ];
 
         //$this->crud->setFromDb();
         $this->crud->setCreateView('vendors/create');
+        $this->crud->setEditView('vendors/edit');
         // ------ CRUD FIELDS
         $this->crud->addColumns($show_fields);
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
@@ -109,6 +120,14 @@ class VendorCrudController extends CrudController
         $redirect_location = parent::storeCrud();
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
+        $vendor = $this->crud->entry;
+        $input = $request->all();
+        //Address
+        $address = new Address($input);       
+        $address->addressable()->associate($vendor);
+        $address->save();
+        //Contacts
+        $vendor->contacts()->sync($request->contacts, false);
         return $redirect_location;
 	}
 
@@ -118,6 +137,13 @@ class VendorCrudController extends CrudController
         $redirect_location = parent::updateCrud();
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
+        $vendor = $this->crud->entry;
+        $input = $request->all();
+        //Address
+        $vendor->address->update($input);
+        //Contacts
+        $vendor->contacts()->detach();
+        $vendor->contacts()->sync($request->contacts, false);
         return $redirect_location;
 	}
 
@@ -130,9 +156,28 @@ class VendorCrudController extends CrudController
         $this->data['saveAction'] = $this->getSaveAction();
         $this->data['fields'] = $this->crud->getCreateFields();
         $this->data['title'] = trans('backpack::crud.add').' '.$this->crud->entity_name;
-        $this->data['contacts'] = Contact::all();
+        $this->data['contacts'] = Contact::all()->pluck('person.full_name','id');
         //xdebug_break();
         // load the view from /resources/views/vendor/backpack/crud/ if it exists, otherwise load the one in the package
         return view($this->crud->getCreateView(), $this->data);
+    }
+
+    public function edit($id)
+    {
+        $this->crud->hasAccessOrFail('update');
+
+        // get the info for that entry
+        $this->data['entry'] = $this->crud->getEntry($id);
+        $this->data['crud'] = $this->crud;
+        $this->data['saveAction'] = $this->getSaveAction();
+        $this->data['fields'] = $this->crud->getUpdateFields($id);
+        $this->data['title'] = trans('backpack::crud.edit').' '.$this->crud->entity_name;
+        $this->data['contacts'] = Contact::all()->pluck('person.full_name','id');
+        $this->data['vendor'] = $this->data['entry'];
+        $this->data['address'] = $this->data['entry']->address;
+        $this->data['id'] = $id;
+
+        // load the view from /resources/views/vendor/backpack/crud/ if it exists, otherwise load the one in the package
+        return view($this->crud->getEditView(), $this->data);
     }
 }

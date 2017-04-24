@@ -67,6 +67,7 @@
         </section>
     </div>
 </div>  
+<?php $address = $person->address ?>
 @include('addresses.show_fields')
 
 

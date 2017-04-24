@@ -56,5 +56,9 @@
             </h2>
         </section>
     </div>
-</div>          
+</div>
+<?php 
+if(isset($person))
+    $address = $person->address;
+?>          
 @include('addresses.fields')
