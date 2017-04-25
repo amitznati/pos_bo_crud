@@ -23,14 +23,7 @@ class CreateOrderTable extends Migration
             $table->integer('z_num')->unsigned()->nullable()->default(null);
             $table->integer('tax_id')->unsigned();
             $table->integer('daily_number')->unsigned()->default('0');
-            // $table->integer('CashierID')->unsigned();
-            // $table->integer('StoreID')->unsigned();
-
-
-            // $table->foreign('CashierID', 'FK_Order_Cashier')
-            //     ->references('ID')->on('cashier')
-            //     ->onDelete('no action')
-            //     ->onUpdate('no action');
+            $table->integer('pos_id')->unsigned();
 
             $table->foreign('customer_id', 'FK_Order_Customer')
                 ->references('id')->on('customers')
@@ -42,10 +35,10 @@ class CreateOrderTable extends Migration
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
-            // $table->foreign('StoreID', 'FK_Order_StoreInfo')
-            //     ->references('StoreID')->on('storeinfo')
-            //     ->onDelete('no action')
-            //     ->onUpdate('no action');
+            $table->foreign('pos_id', 'FK_Order_POS')
+                ->references('id')->on('pos')
+                ->onDelete('no action')
+                ->onUpdate('no action');
 
             $table->foreign('tax_id', 'FK_Order_Tax')
                 ->references('id')->on('taxes')

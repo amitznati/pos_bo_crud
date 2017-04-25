@@ -41,6 +41,13 @@
               <li><a href="{{ url('admin/contact') }}"><i class="fa fa-tag"></i> <span>Contacts</span></a></li> 
             </ul>
           </li>
+          <li class="treeview">
+            <a href="#"><i class="fa fa-wrench"></i> <span>Stores</span> <i class="fa fa-angle-{{$right}} pull-{{$right}}"></i></a>
+            <ul class="treeview-menu">
+              <li><a href="{{ url('admin/store') }}"><i class="fa fa-tag"></i> <span>Stores</span></a></li>
+              <li><a href="{{ url('admin/pos') }}"><i class="fa fa-tag"></i> <span>Points Of Sale</span></a></li>
+            </ul>
+          </li>
         <li class="treeview">
             <a href="#"><i class="fa fa-wrench"></i> <span>{{ trans('backpack::base.administration') }}</span> <i class="fa fa-angle-{{$right}} pull-{{$right}}"></i></a>
             <ul class="treeview-menu">
