@@ -35,4 +35,7 @@ Route::group([
     CRUD::resource('customer', 'CustomerCrudController');
     CRUD::resource('contact', 'ContactCrudController');
     CRUD::resource('salerytype', 'SaleryTypeCrudController');
+	Route::get('menu_design',['as' => 'admin.menu_design', 'uses' => 'MenuDesignController@index']);
+	Route::post('menu_design/saveMenu',['as' => 'admin.menu_design.saveMenu', 'uses' => 'MenuDesignController@saveMenu']);
+    CRUD::resource('menu', 'MenuCrudController');
 });

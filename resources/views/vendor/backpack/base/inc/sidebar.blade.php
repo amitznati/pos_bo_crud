@@ -27,6 +27,13 @@
             </ul>
           </li>
           <li class="treeview">
+            <a href="#"><i class="fa fa-group"></i> <span>Menu Display</span> <i class="fa fa-angle-{!! $right !!} pull-{!! $right !!}"></i></a>
+            <ul class="treeview-menu">
+              <li><a href="{{ url('admin/menu') }}"><i class="fa fa-tag"></i> <span>Menus</span></a></li>
+              <li><a href="{{ url('admin/menu_design') }}"><i class="fa fa-tag"></i> <span>Menu Design</span></a></li>
+            </ul>
+          </li>
+          <li class="treeview">
             <a href="#"><i class="fa fa-wrench"></i> <span>People</span> <i class="fa fa-angle-{{$right}} pull-{{$right}}"></i></a>
             <ul class="treeview-menu">
               <li><a href="{{ url('admin/employee') }}"><i class="fa fa-tag"></i> <span>Employees</span></a></li>
