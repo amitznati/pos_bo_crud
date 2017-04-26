@@ -4,6 +4,7 @@ use Closure;
 use App;
 use Config;
 use Illuminate\Support\Facades\View;
+use Backpack\LangFileManager\app\Models\Language;
 
 class Locale {
     /**
@@ -31,6 +32,8 @@ class Locale {
         View::share('localeStr',$localeStr);
         View::share('right',$right);
         View::share('left',$left);
+        View::share('langs',Language::all());
+
         return $next($request);
     }
 }

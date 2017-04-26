@@ -32,9 +32,9 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            @foreach( array('en','he') as $lang)
-              <li class="{{ session('locale') == $lang ? 'active' : '' }}">
-                <a href="{{ route('locale.setlocale', $lang) }}" >{{ $lang }}</a>
+            @foreach( $langs as $lang)
+              <li class="{{ session('locale') == $lang->abbr ? 'active' : '' }}">
+                <a href="{{ route('locale.setlocale', $lang->abbr) }}" >{{ $lang->native }}</a>
               </li>
             @endforeach
             </ul>
