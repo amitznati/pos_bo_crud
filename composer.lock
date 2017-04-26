@@ -107,16 +107,16 @@
         },
         {
             "name": "backpack/base",
-            "version": "0.7.16",
+            "version": "0.7.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Laravel-Backpack/Base.git",
-                "reference": "8954050bcb50ff13328f7426c6ff6b4e727d17fb"
+                "reference": "1e81a3130a927b643bab1e2e0eb8cbeeef603039"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Laravel-Backpack/Base/zipball/8954050bcb50ff13328f7426c6ff6b4e727d17fb",
-                "reference": "8954050bcb50ff13328f7426c6ff6b4e727d17fb",
+                "url": "https://api.github.com/repos/Laravel-Backpack/Base/zipball/1e81a3130a927b643bab1e2e0eb8cbeeef603039",
+                "reference": "1e81a3130a927b643bab1e2e0eb8cbeeef603039",
                 "shasum": ""
             },
             "require": {
@@ -162,20 +162,20 @@
                 "backpack",
                 "base"
             ],
-            "time": "2017-02-11T18:07:17+00:00"
+            "time": "2017-04-25T13:55:39+00:00"
         },
         {
             "name": "backpack/crud",
-            "version": "3.2.7",
+            "version": "3.2.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Laravel-Backpack/CRUD.git",
-                "reference": "c9d599ec8ede008f4059961d4a418bf071695faa"
+                "reference": "a58929d3633023b9b01e6a5d2311a94d094c1baa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Laravel-Backpack/CRUD/zipball/c9d599ec8ede008f4059961d4a418bf071695faa",
-                "reference": "c9d599ec8ede008f4059961d4a418bf071695faa",
+                "url": "https://api.github.com/repos/Laravel-Backpack/CRUD/zipball/a58929d3633023b9b01e6a5d2311a94d094c1baa",
+                "reference": "a58929d3633023b9b01e6a5d2311a94d094c1baa",
                 "shasum": ""
             },
             "require": {
@@ -226,7 +226,7 @@
                 "read",
                 "update"
             ],
-            "time": "2017-03-16T09:46:05+00:00"
+            "time": "2017-04-21T16:15:29+00:00"
         },
         {
             "name": "backpack/langfilemanager",
@@ -301,16 +301,16 @@
         },
         {
             "name": "backpack/logmanager",
-            "version": "2.3.10",
+            "version": "2.3.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Laravel-Backpack/LogManager.git",
-                "reference": "0f25a1163a994d832a6406b2f03b9f9e93bf9db2"
+                "reference": "fbd1458850a710c386b394b68c95605916d0b215"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Laravel-Backpack/LogManager/zipball/0f25a1163a994d832a6406b2f03b9f9e93bf9db2",
-                "reference": "0f25a1163a994d832a6406b2f03b9f9e93bf9db2",
+                "url": "https://api.github.com/repos/Laravel-Backpack/LogManager/zipball/fbd1458850a710c386b394b68c95605916d0b215",
+                "reference": "fbd1458850a710c386b394b68c95605916d0b215",
                 "shasum": ""
             },
             "require": {
@@ -354,7 +354,7 @@
                 "log manager",
                 "logs"
             ],
-            "time": "2017-04-05T05:14:10+00:00"
+            "time": "2017-04-21T16:27:09+00:00"
         },
         {
             "name": "backpack/pagemanager",
@@ -423,16 +423,16 @@
         },
         {
             "name": "backpack/permissionmanager",
-            "version": "2.1.15",
+            "version": "2.1.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Laravel-Backpack/PermissionManager.git",
-                "reference": "1f7debf0d2a8faa3d0434b3608c2341f60f96564"
+                "reference": "a062897de19b1dc5b19c3da5e11ef0395ee7e5d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Laravel-Backpack/PermissionManager/zipball/1f7debf0d2a8faa3d0434b3608c2341f60f96564",
-                "reference": "1f7debf0d2a8faa3d0434b3608c2341f60f96564",
+                "url": "https://api.github.com/repos/Laravel-Backpack/PermissionManager/zipball/a062897de19b1dc5b19c3da5e11ef0395ee7e5d1",
+                "reference": "a062897de19b1dc5b19c3da5e11ef0395ee7e5d1",
                 "shasum": ""
             },
             "require": {
@@ -491,20 +491,20 @@
                 "updivision",
                 "users roles admin"
             ],
-            "time": "2017-02-17T07:23:19+00:00"
+            "time": "2017-04-21T16:13:36+00:00"
         },
         {
             "name": "backpack/settings",
-            "version": "2.0.15",
+            "version": "2.0.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Laravel-Backpack/Settings.git",
-                "reference": "491c255d3ae563f96beb74976603e35cd01102a0"
+                "reference": "7ed5b32a29b1d3b95fb9e5a7b0627ff088bd7776"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Laravel-Backpack/Settings/zipball/491c255d3ae563f96beb74976603e35cd01102a0",
-                "reference": "491c255d3ae563f96beb74976603e35cd01102a0",
+                "url": "https://api.github.com/repos/Laravel-Backpack/Settings/zipball/7ed5b32a29b1d3b95fb9e5a7b0627ff088bd7776",
+                "reference": "7ed5b32a29b1d3b95fb9e5a7b0627ff088bd7776",
                 "shasum": ""
             },
             "require": {
@@ -550,7 +550,7 @@
                 "tabacitu",
                 "updivision"
             ],
-            "time": "2017-02-14T07:46:09+00:00"
+            "time": "2017-04-21T16:25:43+00:00"
         },
         {
             "name": "barryvdh/elfinder-flysystem-driver",
@@ -1399,16 +1399,16 @@
         },
         {
             "name": "intervention/image",
-            "version": "2.3.11",
+            "version": "2.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "e8881fd99b9804b29e02d6d1c2c15ee459335cf1"
+                "reference": "15a517f052ee15d373ffa145c9642d5fec7ddf5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/e8881fd99b9804b29e02d6d1c2c15ee459335cf1",
-                "reference": "e8881fd99b9804b29e02d6d1c2c15ee459335cf1",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/15a517f052ee15d373ffa145c9642d5fec7ddf5c",
+                "reference": "15a517f052ee15d373ffa145c9642d5fec7ddf5c",
                 "shasum": ""
             },
             "require": {
@@ -1457,7 +1457,7 @@
                 "thumbnail",
                 "watermark"
             ],
-            "time": "2017-02-04T10:37:19+00:00"
+            "time": "2017-04-23T18:45:36+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -1548,16 +1548,16 @@
         },
         {
             "name": "jenssegers/date",
-            "version": "v3.2.9",
+            "version": "v3.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jenssegers/date.git",
-                "reference": "0b31adfc17a359e34ceff20964a9047bca7ea7d9"
+                "reference": "ddc073e6cbba95bf298bf2bf43f2ebb2ec47b050"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jenssegers/date/zipball/0b31adfc17a359e34ceff20964a9047bca7ea7d9",
-                "reference": "0b31adfc17a359e34ceff20964a9047bca7ea7d9",
+                "url": "https://api.github.com/repos/jenssegers/date/zipball/ddc073e6cbba95bf298bf2bf43f2ebb2ec47b050",
+                "reference": "ddc073e6cbba95bf298bf2bf43f2ebb2ec47b050",
                 "shasum": ""
             },
             "require": {
@@ -1601,7 +1601,7 @@
                 "time",
                 "translation"
             ],
-            "time": "2017-03-12T09:26:50+00:00"
+            "time": "2017-04-20T14:50:49+00:00"
         },
         {
             "name": "jeremeamia/SuperClosure",
@@ -1845,16 +1845,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.37",
+            "version": "1.0.39",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "78b5cc4feb61a882302df4fbaf63b7662e5e4ccd"
+                "reference": "2474325ee924134bb05848663b12531f6f2e9fbe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/78b5cc4feb61a882302df4fbaf63b7662e5e4ccd",
-                "reference": "78b5cc4feb61a882302df4fbaf63b7662e5e4ccd",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/2474325ee924134bb05848663b12531f6f2e9fbe",
+                "reference": "2474325ee924134bb05848663b12531f6f2e9fbe",
                 "shasum": ""
             },
             "require": {
@@ -1876,12 +1876,12 @@
                 "league/flysystem-azure": "Allows you to use Windows Azure Blob storage",
                 "league/flysystem-cached-adapter": "Flysystem adapter decorator for metadata caching",
                 "league/flysystem-copy": "Allows you to use Copy.com storage",
-                "league/flysystem-dropbox": "Allows you to use Dropbox storage",
                 "league/flysystem-eventable-filesystem": "Allows you to use EventableFilesystem",
                 "league/flysystem-rackspace": "Allows you to use Rackspace Cloud Files",
                 "league/flysystem-sftp": "Allows you to use SFTP server storage via phpseclib",
                 "league/flysystem-webdav": "Allows you to use WebDAV storage",
-                "league/flysystem-ziparchive": "Allows you to use ZipArchive adapter"
+                "league/flysystem-ziparchive": "Allows you to use ZipArchive adapter",
+                "spatie/flysystem-dropbox": "Allows you to use Dropbox storage"
             },
             "type": "library",
             "extra": {
@@ -1924,7 +1924,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2017-03-22T15:43:14+00:00"
+            "time": "2017-04-25T15:24:43+00:00"
         },
         {
             "name": "league/flysystem-cached-adapter",
@@ -2916,16 +2916,16 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v5.4.6",
+            "version": "v5.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "81fdccfaf8bdc5d5d7a1ef6bb3a61bbb1a6c4a3e"
+                "reference": "56db4ed32a6d5c9824c3ecc1d2e538f663f47eb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/81fdccfaf8bdc5d5d7a1ef6bb3a61bbb1a6c4a3e",
-                "reference": "81fdccfaf8bdc5d5d7a1ef6bb3a61bbb1a6c4a3e",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/56db4ed32a6d5c9824c3ecc1d2e538f663f47eb4",
+                "reference": "56db4ed32a6d5c9824c3ecc1d2e538f663f47eb4",
                 "shasum": ""
             },
             "require": {
@@ -2966,7 +2966,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2017-02-13T07:52:53+00:00"
+            "time": "2017-04-20T17:32:18+00:00"
         },
         {
             "name": "symfony/console",

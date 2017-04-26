@@ -179,7 +179,6 @@ return [
         Backpack\PermissionManager\PermissionManagerServiceProvider::class,
         //
 
-        //Orangehill\Iseed\IseedServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -188,6 +187,19 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+
+        Orangehill\Iseed\IseedServiceProvider::class,
+
+        /*
+        /InfyOm
+        
+        Collective\Html\HtmlServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
+        Prettus\Repository\Providers\RepositoryServiceProvider::class,
+        \InfyOm\Generator\InfyOmGeneratorServiceProvider::class,
+        \InfyOm\AdminLTETemplates\AdminLTETemplatesServiceProvider::class,
+	*/
 
     ],
 
