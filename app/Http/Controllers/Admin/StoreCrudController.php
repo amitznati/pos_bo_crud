@@ -38,6 +38,23 @@ class StoreCrudController extends CrudController
             ],
             
         ];
+
+        $showFields =[
+            [
+                'name' => 'name', // The db column name
+                'label' => "Store Name", // Table column heading
+                'type' => 'Text'
+            ],
+            [
+               // n-n relationship (with pivot table)
+               'label' => "Point Of Sales", // Table column heading
+               'type' => "select_multiple",
+               'name' => 'pos', // the method that defines the relationship in your Model
+               'entity' => 'pos', // the method that defines the relationship in your Model
+               'attribute' => "name", // foreign key attribute that is shown to user
+               'model' => "App\Models\Pos", // foreign key model
+            ],
+        ];
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
@@ -45,6 +62,7 @@ class StoreCrudController extends CrudController
         $this->crud->addFields($createFields, 'both');
 
         // ------ CRUD COLUMNS
+        $this->crud->addColumns($showFields);
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack

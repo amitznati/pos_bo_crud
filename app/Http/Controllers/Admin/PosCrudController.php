@@ -37,7 +37,7 @@ class PosCrudController extends CrudController
             ],
             [  // Select2
                'label' => "Store",
-               'type' => 'select2',
+               'type' => 'select',
                'name' => 'store_id', // the db column for the foreign key
                'entity' => 'store', // the method that defines the relationship in your Model
                'attribute' => 'name', // foreign key attribute that is shown to user
@@ -48,12 +48,14 @@ class PosCrudController extends CrudController
 
         // ------ CRUD FIELDS
         $this->crud->addFields($createFields, 'both');
+        $this->crud->addColumns($createFields);
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
+
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
@@ -117,7 +119,7 @@ class PosCrudController extends CrudController
     public function store(StoreRequest $request)
     {
         // your additional operations before save here
-        $redirect_location = parent::storeCrud();
+    	$redirect_location = parent::storeCrud($request);
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;

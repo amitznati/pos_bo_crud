@@ -21,7 +21,7 @@ class Pos extends Model
     protected $primaryKey = 'id';
     //public $timestamps = false;
     protected $guarded = ['id'];
-    protected $fillable = ['name'];
+    protected $fillable = ['name','store_id'];
     // protected $hidden = [];
     protected $dates = ['deleted_at'];
 
