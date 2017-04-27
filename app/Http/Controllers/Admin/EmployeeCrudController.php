@@ -35,6 +35,26 @@ class EmployeeCrudController extends CrudController
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
+         $show_fields = [
+            [
+               // n-n relationship (with pivot table)
+               'label' => "Role", // Table column heading
+               'type' => "select_multiple",
+               'name' => 'roles', // the method that defines the relationship in your Model
+               'entity' => 'roles', // the method that defines the relationship in your Model
+               'attribute' => "name", // foreign key attribute that is shown to user
+               'model' => "App\Models\Role", // foreign key model
+            ],
+            [
+               // n-n relationship (with pivot table)
+               'label' => "Extra Permissions", // Table column heading
+               'type' => "select_multiple",
+               'name' => 'permissions', // the method that defines the relationship in your Model
+               'entity' => 'permissions', // the method that defines the relationship in your Model
+               'attribute' => "name", // foreign key attribute that is shown to user
+               'model' => "App\Models\Permission", // foreign key model
+            ],
+        ];
 
         //$this->crud->setFromDb();
         $this->crud->setCreateView('employees/create');
@@ -42,7 +62,9 @@ class EmployeeCrudController extends CrudController
         $this->crud->setShowView('employees/show');
 
         // ------ CRUD FIELDS
+        $this->crud->addColumns($show_fields);
         $this->crud->addColumns(Person::$show_fields);
+        
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
