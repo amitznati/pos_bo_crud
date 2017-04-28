@@ -22,37 +22,37 @@ class Person extends Model
     public static $create_fields = [
         [
             'name' => 'first_name', 
-            'label' => "First Name", 
+            'label' => trans('pos.people.person.first_name'), 
             'type' => 'Text'
         ],
         [
             'name' => 'last_name', 
-            'label' => "Last Name", 
+            'label' => trans('pos.people.person.last_name'), 
             'type' => 'Text'
         ],
         [
             'name' => 'full_name', 
-            'label' => "Full Name", 
+            'label' => trans('pos.people.person.full_name'), 
             'type' => 'Text'
         ],
         [
             'name' => 'birthday', 
-            'label' => "Birthday", 
+            'label' => trans('pos.people.person.birthday'), 
             'type' => 'date'
         ],
         [
             'name' => 'phone', 
-            'label' => "Phone Number", 
+            'label' => trans('pos.people.person.phone'), 
             'type' => 'number'
         ],
         [
             'name' => 'email', 
-            'label' => "Email", 
+            'label' => trans('pos.people.person.email'), 
             'type' => 'email'
         ],
         [
             'name' => 'identifier', 
-            'label' => "Identifier", 
+            'label' => trans('pos.people.person.identifier'), 
             'type' => 'Text'
         ],
 
@@ -61,31 +61,31 @@ class Person extends Model
     public static $show_fields = [
         [
             'function_name' => 'personObj', 
-            'label' => "First Name", 
+            'label' => trans('pos.people.person.first_name'), 
             'type' => 'model_function_attribute',
             'attribute' => 'first_name'
         ],
         [
             'function_name' => 'personObj', 
-            'label' => "Last Name", 
+            'label' => trans('pos.people.person.last_name'), 
             'type' => 'model_function_attribute',
             'attribute' => 'last_name'
         ],
         [
             'function_name' => 'personObj', 
-            'label' => "Birthday", 
+            'label' => trans('pos.people.person.birthday'), 
             'type' => 'model_function_attribute',
             'attribute' => 'birthday'
         ],
         [
             'function_name' => 'personObj', 
-            'label' => "Email", 
+            'label' => trans('pos.people.person.email'),  
             'type' => 'model_function_attribute',
             'attribute' => 'email'
         ],
         [
             'function_name' => 'personObj', 
-            'label' => "Phone", 
+            'label' => trans('pos.people.person.phone'),  
             'type' => 'model_function_attribute',
             'attribute' => 'phone'
         ],

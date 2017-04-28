@@ -28,7 +28,7 @@ class EmployeeCrudController extends CrudController
         */
         $this->crud->setModel('App\Models\Employee');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/employee');
-        $this->crud->setEntityNameStrings('Employee', 'Employees');
+        $this->crud->setEntityNameStrings(trans('pos.people.employee.employee'), trans('pos.people.employee.employees'));
 
         /*
         |--------------------------------------------------------------------------
@@ -38,7 +38,7 @@ class EmployeeCrudController extends CrudController
          $show_fields = [
             [
                // n-n relationship (with pivot table)
-               'label' => "Role", // Table column heading
+               'label' => trans('pos.people.employee.role'), // Table column heading
                'type' => "select_multiple",
                'name' => 'roles', // the method that defines the relationship in your Model
                'entity' => 'roles', // the method that defines the relationship in your Model
@@ -47,7 +47,7 @@ class EmployeeCrudController extends CrudController
             ],
             [
                // n-n relationship (with pivot table)
-               'label' => "Extra Permissions", // Table column heading
+               'label' => trans('pos.people.employee.extra_permissions'), // Table column heading
                'type' => "select_multiple",
                'name' => 'permissions', // the method that defines the relationship in your Model
                'entity' => 'permissions', // the method that defines the relationship in your Model

@@ -15,7 +15,8 @@
         "backpack/settings": "^2.0",
         "backpack/pagemanager": "^1.1",
         "backpack/permissionmanager": "^2.1",
-        "orangehill/iseed": "2.2"
+        "orangehill/iseed": "2.2",
+        "google/cloud": "^0.28.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

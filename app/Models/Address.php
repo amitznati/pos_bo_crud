@@ -27,27 +27,27 @@ class Address extends Model
     public static $create_fields = [
         [
             'name' => 'city', // The db column name
-            'label' => "City", // Table column heading
+            'label' => trans('pos.people.address.city'), // Table column heading
             'type' => 'Text'
         ],
         [
             'name' => 'street_name', // The db column name
-            'label' => "Street Name", // Table column heading
+            'label' => trans('pos.people.address.street_name'), // Table column heading
             'type' => 'Text'
         ],        
         [
             'name' => 'street_number', // The db column name
-            'label' => "Street Number", // Table column heading
+            'label' => trans('pos.people.address.street_number'), // Table column heading
             'type' => 'number'
         ],
         [
             'name' => 'hous_number', // The db column name
-            'label' => "Hous Number", // Table column heading
+            'label' => trans('pos.people.address.hous_number'), // Table column heading
             'type' => 'number'
         ],
         [
             'name' => 'zip', // The db column name
-            'label' => "Zip Code", // Table column heading
+            'label' => trans('pos.people.address.zip'), // Table column heading
             'type' => 'number'
         ],
 

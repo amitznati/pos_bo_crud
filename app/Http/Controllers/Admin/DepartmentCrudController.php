@@ -21,7 +21,7 @@ class DepartmentCrudController extends CrudController
 		*/
         $this->crud->setModel("App\Models\Department");
         $this->crud->setRoute("admin/department");
-        $this->crud->setEntityNameStrings('department', 'departments');
+        $this->crud->setEntityNameStrings(trans('pos.catalog.department.department'), trans('pos.catalog.department.departments'));
 
         /*
 		|--------------------------------------------------------------------------

@@ -24,7 +24,7 @@ class ProductCrudController extends CrudController
 		*/
         $this->crud->setModel("App\Models\Product");
         $this->crud->setRoute("admin/product");
-        $this->crud->setEntityNameStrings('product', 'products');
+        $this->crud->setEntityNameStrings(trans('pos.catalog.product.product'), trans('pos.catalog.product.products'));
 
         /*
 		|--------------------------------------------------------------------------
@@ -34,12 +34,12 @@ class ProductCrudController extends CrudController
         $all_fields = [
             [
                 'name' => 'name', // The db column name
-                'label' => "Product Name", // Table column heading
+                'label' => trans('pos.catalog.product.product_name'), // Table column heading
                 'type' => 'Text'
             ],
             [
                // 1-n relationship
-               'label' => "Department", // Table column heading
+               'label' => trans('pos.catalog.department.department'), // Table column heading
                'type' => "select",
                'name' => 'dept_id', // the column that contains the ID of that connected entity;
                'entity' => 'department', // the method that defines the relationship in your Model
@@ -48,7 +48,7 @@ class ProductCrudController extends CrudController
             ],
             [
                // 1-n relationship
-               'label' => "Group", // Table column heading
+               'label' => trans('pos.catalog.group.group'), // Table column heading
                'type' => "select",
                'name' => 'group_id', // the column that contains the ID of that connected entity;
                'entity' => 'group', // the method that defines the relationship in your Model
@@ -57,7 +57,7 @@ class ProductCrudController extends CrudController
             ],
             [   // Number
                 'name' => 'sale_price',
-                'label' => 'Sale Price',
+                'label' => trans('pos.catalog.product.sale_price'),
                 'type' => 'number',
                 // optionals
                  'prefix' => "$",
@@ -65,7 +65,7 @@ class ProductCrudController extends CrudController
             ],
             [   // Number
                 'name' => 'bay_price',
-                'label' => 'Bay Price',
+                'label' => trans('pos.catalog.product.bay_price'),
                 'type' => 'number',
                 // optionals
                  'prefix' => "$",
@@ -73,7 +73,7 @@ class ProductCrudController extends CrudController
             ],
             [
                // 1-n relationship
-               'label' => "Vendor", // Table column heading
+               'label' => trans('pos.catalog.vendor.vendor'), // Table column heading
                'type' => "select",
                'name' => 'vendor_id', // the column that contains the ID of that connected entity;
                'entity' => 'vendor', // the method that defines the relationship in your Model
@@ -82,56 +82,22 @@ class ProductCrudController extends CrudController
             ],
             [
                 'name' => 'barcode', // The db column name
-                'label' => "Barcode", // Table column heading
+                'label' => trans('pos.catalog.product.barcode'), // Table column heading
                 'type' => 'Text'
             ],
             [
                 'name' => 'brand', // The db column name
-                'label' => "Brand", // Table column heading
+                'label' => trans('pos.catalog.product.brand'), // Table column heading
                 'type' => 'Text'
             ],
             [
                 'name' => 'description', // The db column name
-                'label' => "Description", // Table column heading
+                'label' => trans('pos.catalog.product.description'), // Table column heading
                 'type' => 'textarea'
             ],
 
         ];
 
-        $all_columns = [
-            [
-                'name' => 'name', // The db column name
-                'label' => "Product Name", // Table column heading
-                'type' => 'Text'
-            ],
-            [
-               // 1-n relationship
-               'label' => "Department", // Table column heading
-               'type' => "select",
-               'name' => 'dept_id', // the column that contains the ID of that connected entity;
-               'entity' => 'department', // the method that defines the relationship in your Model
-               'attribute' => "name", // foreign key attribute that is shown to user
-               'model' => "App\Models\Department", // foreign key model
-            ],
-            [
-               // 1-n relationship
-               'label' => "Group", // Table column heading
-               'type' => "select",
-               'name' => 'group_id', // the column that contains the ID of that connected entity;
-               'entity' => 'group', // the method that defines the relationship in your Model
-               'attribute' => "name", // foreign key attribute that is shown to user
-               'model' => "App\Models\Group", // foreign key model
-            ],
-            [
-               // 1-n relationship
-               'label' => "Vendor", // Table column heading
-               'type' => "select",
-               'name' => 'vendor_id', // the column that contains the ID of that connected entity;
-               'entity' => 'vendor', // the method that defines the relationship in your Model
-               'attribute' => "company_name", // foreign key attribute that is shown to user
-               'model' => "App\Models\Vendor", // foreign key model
-            ],
-        ];
 
         //$this->crud->setFromDb();
 

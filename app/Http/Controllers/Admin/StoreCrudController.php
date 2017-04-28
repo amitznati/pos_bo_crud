@@ -21,7 +21,7 @@ class StoreCrudController extends CrudController
         */
         $this->crud->setModel('App\Models\Store');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/store');
-        $this->crud->setEntityNameStrings('Store', 'Stores');
+        $this->crud->setEntityNameStrings(trans('pos.stores.store'), trans('pos.stores.stores'));
 
         /*
         |--------------------------------------------------------------------------
@@ -33,7 +33,7 @@ class StoreCrudController extends CrudController
         $createFields = [
             [
                 'name' => 'name', // The db column name
-                'label' => "Store Name", // Table column heading
+                'label' => trans('pos.stores.store_name'), // Table column heading
                 'type' => 'Text'
             ],
             
@@ -42,12 +42,12 @@ class StoreCrudController extends CrudController
         $showFields =[
             [
                 'name' => 'name', // The db column name
-                'label' => "Store Name", // Table column heading
+                'label' => trans('pos.stores.store_name'), // Table column heading
                 'type' => 'Text'
             ],
             [
                // n-n relationship (with pivot table)
-               'label' => "Point Of Sales", // Table column heading
+               'label' => trans('pos.stores.pos.poss'), // Table column heading
                'type' => "select_multiple",
                'name' => 'pos', // the method that defines the relationship in your Model
                'entity' => 'pos', // the method that defines the relationship in your Model

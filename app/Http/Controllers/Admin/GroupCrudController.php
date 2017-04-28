@@ -21,7 +21,7 @@ class GroupCrudController extends CrudController
 		*/
         $this->crud->setModel("App\Models\Group");
         $this->crud->setRoute("admin/group");
-        $this->crud->setEntityNameStrings('group', 'groups');
+        $this->crud->setEntityNameStrings(trans('pos.catalog.group.group'), trans('pos.catalog.group.groups'));
 
         /*
 		|--------------------------------------------------------------------------
@@ -31,12 +31,12 @@ class GroupCrudController extends CrudController
         $all_fields = [
             [
                 'name' => 'name', // The db column name
-                'label' => "Group Name", // Table column heading
+                'label' => trans('pos.catalog.group.group_name'), // Table column heading
                 'type' => 'Text'
             ],
             [
                // 1-n relationship
-               'label' => "Department", // Table column heading
+               'label' => trans('pos.catalog.department.department'), // Table column heading
                'type' => "select",
                'name' => 'department_id', // the column that contains the ID of that connected entity;
                'entity' => 'department', // the method that defines the relationship in your Model
@@ -49,12 +49,12 @@ class GroupCrudController extends CrudController
         $all_columns = [
             [
                 'name' => 'name', // The db column name
-                'label' => "Group Name", // Table column heading
+                'label' => trans('pos.catalog.group.group_name'), // Table column heading
                 'type' => 'Text'
             ],
             [
                // 1-n relationship
-               'label' => "Department", // Table column heading
+               'label' => trans('pos.catalog.department.department'), // Table column heading
                'type' => "select",
                'name' => 'department_id', // the column that contains the ID of that connected entity;
                'entity' => 'department', // the method that defines the relationship in your Model

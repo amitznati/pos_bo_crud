@@ -10,12 +10,21 @@ use Illuminate\Http\Request;
 // VALIDATION: change the requests to match your own file names if you need form validation
 use Backpack\LangFileManager\app\Http\Requests\LanguageRequest as StoreRequest;
 use Backpack\LangFileManager\app\Http\Requests\LanguageRequest as UpdateRequest;
+# Imports the Google Cloud client library
+        use Google\Cloud\Translate\TranslateClient;
 
 class LanguageCrudController extends CrudController
 {
+
+    
     public function __construct()
     {
         parent::__construct();
+
+        # Instantiates a client
+        $this->translate = new TranslateClient([
+            'projectId' => "mypos-1492327738853",
+        ]);
 
         $this->crud->setModel("Backpack\LangFileManager\app\Models\Language");
         $this->crud->setRoute(config('backpack.base.route_prefix', 'admin').'/language');
@@ -79,6 +88,8 @@ class LanguageCrudController extends CrudController
         return parent::storeCrud();
     }
 
+    
+
     public function update(UpdateRequest $request)
     {
         return parent::updateCrud();
@@ -106,6 +117,7 @@ class LanguageCrudController extends CrudController
 
     public function showTexts(LangFiles $langfile, Language $languages, $lang = '', $file = 'site')
     {
+        
         // SECURITY
         // check if that file isn't forbidden in the config file
         if (in_array($file, config('backpack.langfilemanager.language_ignore'))) {
@@ -127,7 +139,14 @@ class LanguageCrudController extends CrudController
         $this->data['fileArray'] = $langfile->getFileContent();
         $this->data['langfile'] = $langfile;
         $this->data['title'] = trans('backpack::langfilemanager.translations');
-
+        
+        
+  //       $newArray = [];
+		// if(is_array($this->data['fileArray']))
+		// 	$newArray = $this->translateArray($this->data['fileArray'],$this->data['currentLang']);
+  //       $this->data['fileArray'] = $newArray;
+        
+        
         return view('langfilemanager::translations', $this->data);
     }
 
@@ -161,5 +180,27 @@ class LanguageCrudController extends CrudController
         }
 
         return redirect()->back();
+    }
+
+
+    private function translateArray($postArray,$lang)
+    {
+        $returnArray = [];
+
+        foreach ($postArray as $key => $value) {
+            if (is_array($value)) {
+            	$returnArray[$key] = $this->translateArray($value,$lang);
+            } else {
+            	$returnArray[$key] = $this->translateText($value,$lang);
+            }
+        }
+        return $returnArray;
+    }
+
+
+    public function translateText($text,$target)
+    {
+        $translation = $this->translate->translate($text, [ 'target' => $target ]);
+        return $translation['text'];
     }
 }

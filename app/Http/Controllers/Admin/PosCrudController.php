@@ -21,7 +21,7 @@ class PosCrudController extends CrudController
         */
         $this->crud->setModel('App\Models\Pos');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/pos');
-        $this->crud->setEntityNameStrings('Point Of Sale', 'Point Of Sales');
+        $this->crud->setEntityNameStrings(trans('pos.stores.pos.pos'), trans('pos.stores.pos.poss'));
 
         /*
         |--------------------------------------------------------------------------
@@ -32,11 +32,11 @@ class PosCrudController extends CrudController
         $createFields = [
             [
                 'name' => 'name', // The db column name
-                'label' => "Point Name", // Table column heading
+                'label' => trans('pos.stores.pos.pos_name'), // Table column heading
                 'type' => 'Text'
             ],
             [  // Select2
-               'label' => "Store",
+               'label' => trans('pos.stores.stores'),
                'type' => 'select',
                'name' => 'store_id', // the db column for the foreign key
                'entity' => 'store', // the method that defines the relationship in your Model
