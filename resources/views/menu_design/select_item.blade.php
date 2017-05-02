@@ -1,10 +1,10 @@
 <ul class="nav nav-tabs nav-justified" id="myTab">
     <li class="active">
-        <a data-toggle="tab" href="#service-one">מוצרים</a>
+        <a data-toggle="tab" href="#service-one">{{trans('pos.menu_display.menu.menus')}}</a>
     </li>
 
     <li class="">
-        <a data-toggle="tab" href="#service-two">תפריטים</a>
+        <a data-toggle="tab" href="#service-two">{{trans('pos.catalog.product.products')}}</a>
     </li>
 </ul>
 

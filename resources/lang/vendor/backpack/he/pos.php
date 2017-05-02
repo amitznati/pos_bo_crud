@@ -1,6 +1,10 @@
 <?php 
 
  return [
+    'general' => [
+        'general' => 'כללי',
+    ],
+
     "menu_display" => [
         "menu_display" => "תצוגת תפריט",
         "menu" => [
@@ -10,7 +14,8 @@
         ],
         "menu_design" => [
             "menu_design" => "עיצוב תפריט",
-            "add_new_item" => "הוסף פריט חדש"
+            "add_new_item" => "הוסף פריט חדש",
+            "cancel_add_new_item" => "בטל הוספת פריט חדש"
         ]
     ],
     "stores" => [
@@ -32,11 +37,13 @@
             "sale_price" => "מחיר מכירה",
             "bay_price" => "מחיר קניה",
             "barcode" => "ברקוד",
-            "description" => "תאור"
+            'brand' => 'מותג',
+            "description" => "תאור",
+	    "brand" => "מותג"
         ],
         "department" => [
             "department" => "מחלקה",
-            "Department" => "מחלקות",
+            "departments" => "מחלקות",
             "department_name" => "שם המחלקה"
         ],
         "group" => [
@@ -47,7 +54,7 @@
         "vendor" => [
             "vendor" => "ספק",
             "vendors" => "ספקים",
-            "Vendor_name" => "שם ספק/חברה"
+            "vendor_name" => "שם ספק/חברה"
         ]
     ],
     "people" => [
@@ -60,7 +67,7 @@
             "full_name" => "שם מלא",
             "birthday" => "יומולדת",
             "phone" => "מספר טלפון",
-            "email" => "אמייל",
+            "email" => "E-Mail",
             "identifier" => "מספר מזהה"
         ],
         "employee" => [
@@ -68,11 +75,17 @@
             "employees" => "עובדים",
             "role" => "תפקיד",
             "permissions" => "הרשאות",
-            "extra_permissions" => "הרשאות נוספות"
+            "extra_permissions" => "הרשאות נוספות",
+            "salery" => "שכר",
+            "add_salery" => "הוסף שכר",
+            "update_salery" => "עדכן שכר",
+            "salery_type" => "סוג שכר",
+            "amount" => "סכום",
         ],
         "contact" => [
             "contact" => "איש קשר",
-            "contacts" => "אנשי קשר"
+            "contacts" => "אנשי קשר",
+            "new_contact" => "איש קשר חדש"
         ],
         "customer" => [
             "customer" => "לקוח",
@@ -80,10 +93,11 @@
         ],
         "address" => [
             "address" => "כתובת",
+	    "addresses" => "כתובות",
             "house_number" => "מספר בית",
             "street_number" => "מספר רחוב",
             "street_name" => "שם הרחוב",
-            "city" => "דימונה",
+            "city" => "עיר",
             "zip" => "מיקוד"
         ]
     ]

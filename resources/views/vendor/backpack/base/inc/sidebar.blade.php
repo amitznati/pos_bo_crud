@@ -18,34 +18,34 @@
         <ul class="sidebar-menu">
         <!-- Catalog - Products, Department, Groups... -->
           <li class="treeview">
-            <a href="#"><i class="fa fa-group"></i> <span>Catalog</span> <i class="fa fa-angle-{!! $right !!} pull-{!! $right !!}"></i></a>
+            <a href="#"><i class="fa fa-group"></i> <span>{{trans('pos.catalog.catalog')}}</span> <i class="fa fa-angle-{!! $right !!} pull-{!! $right !!}"></i></a>
             <ul class="treeview-menu">
-              <li><a href="{{ url('admin/product') }}"><i class="fa fa-tag"></i> <span>Products</span></a></li>
-              <li><a href="{{ url('admin/department') }}"><i class="fa fa-tag"></i> <span>Departments</span></a></li>
-              <li><a href="{{ url('admin/group') }}"><i class="fa fa-tag"></i> <span>Groups</span></a></li>
-              <li><a href="{{ url('admin/vendor') }}"><i class="fa fa-tag"></i> <span>Vendors</span></a></li>
+              <li><a href="{{ url('admin/product') }}"><i class="fa fa-tag"></i> <span>{{trans('pos.catalog.product.products')}}</span></a></li>
+              <li><a href="{{ url('admin/department') }}"><i class="fa fa-tag"></i> <span>{{trans('pos.catalog.department.departments')}}</span></a></li>
+              <li><a href="{{ url('admin/group') }}"><i class="fa fa-tag"></i> <span>{{trans('pos.catalog.group.groups')}}</span></a></li>
+              <li><a href="{{ url('admin/vendor') }}"><i class="fa fa-tag"></i> <span>{{trans('pos.catalog.vendor.vendors')}}</span></a></li>
             </ul>
           </li>
           <li class="treeview">
-            <a href="#"><i class="fa fa-group"></i> <span>Menu Display</span> <i class="fa fa-angle-{!! $right !!} pull-{!! $right !!}"></i></a>
+            <a href="#"><i class="fa fa-group"></i> <span>{{trans('pos.menu_display.menu_display')}}</span> <i class="fa fa-angle-{!! $right !!} pull-{!! $right !!}"></i></a>
             <ul class="treeview-menu">
-              <li><a href="{{ url('admin/menu') }}"><i class="fa fa-tag"></i> <span>Menus</span></a></li>
-              <li><a href="{{ url('admin/menu_design') }}"><i class="fa fa-tag"></i> <span>Menu Design</span></a></li>
+              <li><a href="{{ url('admin/menu') }}"><i class="fa fa-tag"></i> <span>{{trans('pos.menu_display.menu.menus')}}</span></a></li>
+              <li><a href="{{ url('admin/menu_design') }}"><i class="fa fa-tag"></i> <span>{{trans('pos.menu_display.menu_design.menu_design')}}</span></a></li>
             </ul>
           </li>
           <li class="treeview">
-            <a href="#"><i class="fa fa-wrench"></i> <span>People</span> <i class="fa fa-angle-{{$right}} pull-{{$right}}"></i></a>
+            <a href="#"><i class="fa fa-wrench"></i> <span>{{trans('pos.people.people')}}</span> <i class="fa fa-angle-{{$right}} pull-{{$right}}"></i></a>
             <ul class="treeview-menu">
-              <li><a href="{{ url('admin/employee') }}"><i class="fa fa-tag"></i> <span>Employees</span></a></li>
-              <li><a href="{{ url('admin/customer') }}"><i class="fa fa-tag"></i> <span>Customers</span></a></li>
-              <li><a href="{{ url('admin/contact') }}"><i class="fa fa-tag"></i> <span>Contacts</span></a></li> 
+              <li><a href="{{ url('admin/employee') }}"><i class="fa fa-tag"></i> <span>{{trans('pos.people.employee.employees')}}</span></a></li>
+              <li><a href="{{ url('admin/customer') }}"><i class="fa fa-tag"></i> <span>{{trans('pos.people.customer.customers')}}</span></a></li>
+              <li><a href="{{ url('admin/contact') }}"><i class="fa fa-tag"></i> <span>{{trans('pos.people.contact.contacts')}}</span></a></li> 
             </ul>
           </li>
           <li class="treeview">
-            <a href="#"><i class="fa fa-wrench"></i> <span>Stores</span> <i class="fa fa-angle-{{$right}} pull-{{$right}}"></i></a>
+            <a href="#"><i class="fa fa-wrench"></i> <span>{{trans('pos.stores.stores')}}</span> <i class="fa fa-angle-{{$right}} pull-{{$right}}"></i></a>
             <ul class="treeview-menu">
-              <li><a href="{{ url('admin/store') }}"><i class="fa fa-tag"></i> <span>Stores</span></a></li>
-              <li><a href="{{ url('admin/pos') }}"><i class="fa fa-tag"></i> <span>Points Of Sale</span></a></li>
+              <li><a href="{{ url('admin/store') }}"><i class="fa fa-tag"></i> <span>{{trans('pos.stores.stores')}}</span></a></li>
+              <li><a href="{{ url('admin/pos') }}"><i class="fa fa-tag"></i> <span>{{trans('pos.stores.pos.poss')}}</span></a></li>
             </ul>
           </li>
           <!-- Users, Roles Permissions -->

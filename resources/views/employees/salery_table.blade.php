@@ -1,9 +1,9 @@
 <table class="table table-responsive table-hover table-condensed">
     <thead>
-        <th>Salery Type</th>
-        <th>Amount</th>
-        <th>Start Date</th>
-        <th>End Date</th>
+        <th>{{trans('pos.people.employee.salery_type')}}</th>
+        <th>{{trans('pos.people.employee.amount')}}</th>
+        <th>{{trans('backpack::crud.created_at')}}</th>
+        <th>{{trans('backpack::crud.updated_at')}}</th>
     </thead>
     <tbody>
     @foreach($employee->employeeSaleries()->withTrashed()->get() as $salery)

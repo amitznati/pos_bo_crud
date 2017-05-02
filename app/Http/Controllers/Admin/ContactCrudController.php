@@ -55,7 +55,7 @@ class ContactCrudController extends CrudController
 
         // ------ CRUD COLUMNS
         // $this->crud->addColumn(); // add a single column, at the end of the stack
-         $this->crud->addColumns(Person::$show_fields); // add multiple columns, at the end of the stack
+         $this->crud->addColumns(Person::getShowFields()); // add multiple columns, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack

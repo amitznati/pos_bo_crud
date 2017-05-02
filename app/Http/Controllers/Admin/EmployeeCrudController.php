@@ -63,7 +63,7 @@ class EmployeeCrudController extends CrudController
 
         // ------ CRUD FIELDS
         $this->crud->addColumns($show_fields);
-        $this->crud->addColumns(Person::$show_fields);
+        $this->crud->addColumns(Person::getShowFields());
         
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');

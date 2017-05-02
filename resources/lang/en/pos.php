@@ -13,7 +13,8 @@
         ],
         "menu_design" => [
             "menu_design" => "Menu Design",
-            "add_new_item" => "Add a new item"
+            "add_new_item" => "Add a new item",
+	    "cancel_add_new_item" => "Cancel Add New Item"
         ]
     ],
     "stores" => [
@@ -35,12 +36,13 @@
             "sale_price" => "Sale Price",
             "bay_price" => "Cost Price",
             "barcode" => "Barcode",
+	    'brand' => 'Brand',
             "description" => "Description",
             "brand" => "Brand"
         ],
         "department" => [
             "department" => "Department",
-            "Department" => "Departments",
+            "departments" => "Departments",
             "department_name" => "Department Name"
         ],
         "group" => [
@@ -51,7 +53,7 @@
         "vendor" => [
             "vendor" => "Vendor",
             "vendors" => "Suppliers",
-            "Vendor_name" => "Name of Supplier / Company"
+            "vendor_name" => "Name of Supplier / Company"
         ]
     ],
     "people" => [
@@ -72,11 +74,17 @@
             "employees" => "Employees",
             "role" => "Role",
             "permissions" => "Permissions",
-            "extra_permissions" => "Additional Permissions"
+            "extra_permissions" => "Additional Permissions",
+	    "salery" => "Salery",
+            "add_salery" => "Add Salery",
+            "update_salery" => "Update Salery",
+            "salery_type" => "Salery Type",
+            "amount" => "Amount",
         ],
         "contact" => [
             "contact" => "Contact",
-            "contacts" => "Contacts"
+            "contacts" => "Contacts",
+	    "new_contact" => "New Contact"
         ],
         "customer" => [
             "customer" => "Consumer",

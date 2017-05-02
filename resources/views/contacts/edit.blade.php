@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Contact
+            {{trans('pos.people.contact.contact')}}
         </h1>
    </section>
    <div class="content">
@@ -19,8 +19,8 @@
                         @include('people.fields')
                         <!-- Submit Field -->
                         <div class="form-group col-sm-12">
-                            {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                            <a href="{!! route('contacts.index') !!}" class="btn btn-default">Cancel</a>
+                            {!! Form::submit({{trans('backpack::crud.save')}}, ['class' => 'btn btn-primary']) !!}
+                            <a href="{!! route('contacts.index') !!}" class="btn btn-default">{{trans('backpack::crud.cancel')}}</a>
                         </div>
 
                    {!! Form::close() !!}

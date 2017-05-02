@@ -1,7 +1,7 @@
 <!-- Roles Field -->
 <section class="content-header">
         <h2>
-            תפקיד
+            {{trans('pos.people.employee.role')}}
         </h2>
     </section>
 <div class="box-body">
@@ -18,7 +18,7 @@
 <!-- Permissions Field -->
 <section class="content-header">
         <h2>
-            הרשאות נוספות
+             {{trans('pos.people.employee.extra_permissions')}}
         </h2>
     </section>
 <div class="box-body">
@@ -34,18 +34,18 @@
 
 <section class="content-header">
   <h2>
-      שכר
+      {{trans('pos.people.employee.salery')}}
   </h2>
   @if(isset($employee))
     @include('employees.salery_table')
       <div class="form-group col-sm-12" >
         {!! Form::checkbox('add_salery', 'checked') !!}
-        {!! Form::label('add_salery', 'Update Salery' ) !!}
+        {!! Form::label('add_salery', trans('pos.people.employee.update_salery') ) !!}
       </div>
   @else
     <div class="form-group col-sm-12" >
       {!! Form::checkbox('add_salery', 'checked') !!}
-      {!! Form::label('add_salery', 'Add Salery' ) !!}
+      {!! Form::label('add_salery', trans('pos.people.employee.add_salery')) !!}
     </div>
   @endif
 
@@ -53,11 +53,11 @@
 <div class="box-body">
    <div class="row" id="salery-div" >
     <div class="form-group col-sm-4">
-        {!! Form::label('salery_type_id', 'Salery Type:') !!}
+        {!! Form::label('salery_type_id', trans('pos.people.employee.salery_type')) !!}
         {!! Form::select('salery_type_id', $saleries, null, ['class' => 'form-control']) !!}
     </div>
     <div class="form-group col-sm-4">
-        {!! Form::label('amount', 'Amount:') !!}
+        {!! Form::label('amount', trans('pos.people.employee.amount')) !!}
         {!! Form::number('amount', 0, ['class' => 'form-control currency','min' => 0, 'step' => '0.01']) !!}
     </div>
    </div>

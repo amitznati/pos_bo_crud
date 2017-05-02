@@ -6,7 +6,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Contact
+            {{trans('pos.people.contact.contacts')}}
         </h1>
     </section>
     <div class="content">
@@ -21,7 +21,7 @@
                         <!-- Submit Field -->
                         <div class="form-group col-sm-12">
                             {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                            <a href="{!! route('contacts.index') !!}" class="btn btn-default">Cancel</a>
+                            <a href="{!! route('contacts.index') !!}" class="btn btn-default">{{trans('backpack::crud.cancel')}}</a>
                         </div>
                     {!! Form::close() !!}
                 </div>

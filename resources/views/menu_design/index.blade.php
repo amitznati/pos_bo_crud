@@ -34,7 +34,7 @@
         <div class="clearfix">
             <div class="box-body">
             <a data-bind="click: showItemSelect, text: showText" class="btn btn-primary"></a>
-            <a data-bind="click: save" class='btn btn-primary'><i class="glyphicon glyphicon-eye-open"></i>שמור</a>
+            <a data-bind="click: save" class='btn btn-primary'><i class="glyphicon glyphicon-eye-open"></i>{{trans('backpack::crud.save')}}</a>
             </div>
         </div>
         <div>
@@ -124,9 +124,9 @@
 
                 this.showItemSelect = function(){
                     self.itemSelectVisible(!self.itemSelectVisible());
-                    self.showText('הוסף פריט');
+                    self.showText({{trans('pos.menu_display.menu_design.add_new_item')}});
                     if(self.itemSelectVisible())
-                        self.showText('בטל הוספת פריט');
+                        self.showText({{trans('pos.menu_display.menu_design.cancel_add_new_item')}});
                 }
 
                 this.save = function(){

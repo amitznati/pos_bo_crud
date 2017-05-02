@@ -24,6 +24,7 @@ return [
     'back_to_all'         => 'Back to all ',
     'cancel'              => 'Cancel',
     'add_a_new'           => 'Add a new ',
+    'select'           => 'Select ',
 
     // Edit form
     'edit'                 => 'Edit',
@@ -42,6 +43,10 @@ return [
 
     // CRUD table view
     'all'                       => 'All ',
+    'id'                        => 'ID',
+    'created_at'                => 'Created At',
+    'updated_at'                => 'Updated At',
+    'deleted_at'                => 'deleted At',
     'in_the_database'           => 'in the database',
     'list'                      => 'List',
     'actions'                   => 'Actions',

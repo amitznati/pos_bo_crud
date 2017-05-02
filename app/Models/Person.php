@@ -19,79 +19,79 @@ class Person extends Model
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
-    public static $create_fields = [
-        [
-            'name' => 'first_name', 
-            'label' => trans('pos.people.person.first_name'), 
-            'type' => 'Text'
-        ],
-        [
-            'name' => 'last_name', 
-            'label' => trans('pos.people.person.last_name'), 
-            'type' => 'Text'
-        ],
-        [
-            'name' => 'full_name', 
-            'label' => trans('pos.people.person.full_name'), 
-            'type' => 'Text'
-        ],
-        [
-            'name' => 'birthday', 
-            'label' => trans('pos.people.person.birthday'), 
-            'type' => 'date'
-        ],
-        [
-            'name' => 'phone', 
-            'label' => trans('pos.people.person.phone'), 
-            'type' => 'number'
-        ],
-        [
-            'name' => 'email', 
-            'label' => trans('pos.people.person.email'), 
-            'type' => 'email'
-        ],
-        [
-            'name' => 'identifier', 
-            'label' => trans('pos.people.person.identifier'), 
-            'type' => 'Text'
-        ],
+//     public static $create_fields = [
+//     		[
+//     				'name' => 'first_name',
+//     				'label' => trans('pos.people.person.first_name'),
+//     				'type' => 'Text'
+//     		],
+//     		[
+//     				'name' => 'last_name',
+//     				'label' => trans('pos.people.person.last_name'),
+//     				'type' => 'Text'
+//     		],
+//     		[
+//     				'name' => 'full_name',
+//     				'label' => trans('pos.people.person.full_name'),
+//     				'type' => 'Text'
+//     		],
+//     		[
+//     				'name' => 'birthday',
+//     				'label' => trans('pos.people.person.birthday'),
+//     				'type' => 'date'
+//     		],
+//     		[
+//     				'name' => 'phone',
+//     				'label' => trans('pos.people.person.phone'),
+//     				'type' => 'number'
+//     		],
+//     		[
+//     				'name' => 'email',
+//     				'label' => trans('pos.people.person.email'),
+//     				'type' => 'email'
+//     		],
+//     		[
+//     				'name' => 'identifier',
+//     				'label' => trans('pos.people.person.identifier'),
+//     				'type' => 'Text'
+//     		],
+    		
+//     ];
+    
+//     public static $show_fields = [
+//         [
+//             'function_name' => 'personObj', 
+//             'label' => trans('pos.people.person.first_name'), 
+//             'type' => 'model_function_attribute',
+//             'attribute' => 'first_name'
+//         ],
+//         [
+//             'function_name' => 'personObj', 
+//             'label' => trans('pos.people.person.last_name'), 
+//             'type' => 'model_function_attribute',
+//             'attribute' => 'last_name'
+//         ],
+//         [
+//             'function_name' => 'personObj', 
+//             'label' => trans('pos.people.person.birthday'), 
+//             'type' => 'model_function_attribute',
+//             'attribute' => 'birthday'
+//         ],
+//         [
+//             'function_name' => 'personObj', 
+//             'label' => trans('pos.people.person.email'),  
+//             'type' => 'model_function_attribute',
+//             'attribute' => 'email'
+//         ],
+//         [
+//             'function_name' => 'personObj', 
+//             'label' => trans('pos.people.person.phone'),  
+//             'type' => 'model_function_attribute',
+//             'attribute' => 'phone'
+//         ],
 
-    ];
 
-    public static $show_fields = [
-        [
-            'function_name' => 'personObj', 
-            'label' => trans('pos.people.person.first_name'), 
-            'type' => 'model_function_attribute',
-            'attribute' => 'first_name'
-        ],
-        [
-            'function_name' => 'personObj', 
-            'label' => trans('pos.people.person.last_name'), 
-            'type' => 'model_function_attribute',
-            'attribute' => 'last_name'
-        ],
-        [
-            'function_name' => 'personObj', 
-            'label' => trans('pos.people.person.birthday'), 
-            'type' => 'model_function_attribute',
-            'attribute' => 'birthday'
-        ],
-        [
-            'function_name' => 'personObj', 
-            'label' => trans('pos.people.person.email'),  
-            'type' => 'model_function_attribute',
-            'attribute' => 'email'
-        ],
-        [
-            'function_name' => 'personObj', 
-            'label' => trans('pos.people.person.phone'),  
-            'type' => 'model_function_attribute',
-            'attribute' => 'phone'
-        ],
-
-
-    ];
+//     ];
     protected $dates = ['deleted_at'];
 
 
@@ -147,5 +147,44 @@ class Person extends Model
     public function personable()
     {
         return $this->morphTo('personable');
+    }
+
+    public static function getShowFields()
+    {
+    	$show_fields = [
+    			[
+    					'function_name' => 'personObj',
+    					'label' => trans('pos.people.person.first_name'),
+    					'type' => 'model_function_attribute',
+    					'attribute' => 'first_name'
+    			],
+    			[
+    					'function_name' => 'personObj',
+    					'label' => trans('pos.people.person.last_name'),
+    					'type' => 'model_function_attribute',
+    					'attribute' => 'last_name'
+    			],
+    			[
+    					'function_name' => 'personObj',
+    					'label' => trans('pos.people.person.birthday'),
+    					'type' => 'model_function_attribute',
+    					'attribute' => 'birthday'
+    			],
+    			[
+    					'function_name' => 'personObj',
+    					'label' => trans('pos.people.person.email'),
+    					'type' => 'model_function_attribute',
+    					'attribute' => 'email'
+    			],
+    			[
+    					'function_name' => 'personObj',
+    					'label' => trans('pos.people.person.phone'),
+    					'type' => 'model_function_attribute',
+    					'attribute' => 'phone'
+    			],
+    			
+    			
+    	];
+    	return $show_fields;
     }
 }
