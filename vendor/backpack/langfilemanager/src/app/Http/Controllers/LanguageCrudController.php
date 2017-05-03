@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Backpack\LangFileManager\app\Http\Requests\LanguageRequest as StoreRequest;
 use Backpack\LangFileManager\app\Http\Requests\LanguageRequest as UpdateRequest;
 # Imports the Google Cloud client library
-        use Google\Cloud\Translate\TranslateClient;
+       // use Google\Cloud\Translate\TranslateClient;
 
 class LanguageCrudController extends CrudController
 {
@@ -22,9 +22,9 @@ class LanguageCrudController extends CrudController
         parent::__construct();
 
         # Instantiates a client
-        $this->translate = new TranslateClient([
-            'projectId' => "mypos-1492327738853",
-        ]);
+        // $this->translate = new TranslateClient([
+        //     'projectId' => "mypos-1492327738853",
+        // ]);
 
         $this->crud->setModel("Backpack\LangFileManager\app\Models\Language");
         $this->crud->setRoute(config('backpack.base.route_prefix', 'admin').'/language');
