@@ -29,7 +29,36 @@ class DepartmentCrudController extends CrudController
 		|--------------------------------------------------------------------------
 		*/
 
-        $this->crud->setFromDb();
+        $createFields = [
+            [
+                'name' => 'name', // The db column name
+                'label' => trans('pos.catalog.department.department'), // Table column heading
+                'type' => 'Text'
+            ],
+            
+        ];
+
+        $showFields =[
+            [
+                'name' => 'name', // The db column name
+                'label' => trans('pos.catalog.department.department'), // Table column heading
+                'type' => 'Text'
+            ],
+            [
+               // n-n relationship (with pivot table)
+               'label' => trans('pos.catalog.group.groups'), // Table column heading
+               'type' => "select_multiple",
+               'name' => 'groups', // the method that defines the relationship in your Model
+               'entity' => 'groups', // the method that defines the relationship in your Model
+               'attribute' => "name", // foreign key attribute that is shown to user
+               'model' => "App\Models\Group", // foreign key model
+            ],
+        ];
+
+        $this->crud->addFields($createFields, 'both');
+
+
+        $this->crud->addColumns($showFields);
 
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');

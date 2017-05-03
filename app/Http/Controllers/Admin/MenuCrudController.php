@@ -29,7 +29,23 @@ class MenuCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+        $createFields = [
+            [
+                'name' => 'name', // The db column name
+                'label' => trans('pos.menu_display.menu.menu'), // Table column heading
+                'type' => 'Text'
+            ],
+            
+        ];
+
+        // ------ CRUD FIELDS
+        // $this->crud->addField($options, 'update/create/both');
+        // $this->crud->addFields($array_of_arrays, 'update/create/both');
+        // $this->crud->removeField('name', 'update/create/both');
+        $this->crud->addFields($createFields, 'both');
+
+        // ------ CRUD COLUMNS
+        $this->crud->addColumns($createFields);
 
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');

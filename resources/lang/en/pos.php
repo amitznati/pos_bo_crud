@@ -75,10 +75,11 @@
             "role" => "Role",
             "permissions" => "Permissions",
             "extra_permissions" => "Additional Permissions",
-	    "salery" => "Salery",
+	        "salery" => "Salery",
             "add_salery" => "Add Salery",
             "update_salery" => "Update Salery",
             "salery_type" => "Salery Type",
+            "salery_types" => "Salery Types",
             "amount" => "Amount",
         ],
         "contact" => [

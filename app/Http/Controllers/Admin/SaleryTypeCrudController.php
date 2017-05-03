@@ -21,7 +21,7 @@ class SaleryTypeCrudController extends CrudController
         */
         $this->crud->setModel('App\Models\SaleryType');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/salerytype');
-        $this->crud->setEntityNameStrings('Salery Type', 'Salery Types');
+        $this->crud->setEntityNameStrings(trans('pos.people.employee.salery_type'), trans('pos.people.employee.salery_types'));
 
         /*
         |--------------------------------------------------------------------------
@@ -29,16 +29,23 @@ class SaleryTypeCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+        $createFields = [
+            [
+                'name' => 'name', // The db column name
+                'label' => trans('pos.people.employee.salery_type'), // Table column heading
+                'type' => 'Text'
+            ],
+            
+        ];
 
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
-        // $this->crud->removeFields($array_of_names, 'update/create/both');
+        $this->crud->addFields($createFields, 'both');
 
         // ------ CRUD COLUMNS
-        // $this->crud->addColumn(); // add a single column, at the end of the stack
+        $this->crud->addColumns($createFields);
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack

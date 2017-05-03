@@ -15,6 +15,7 @@ return [
     'toggle_navigation'    => 'Toggle navigation',
     'administration'       => 'ADMINISTRATION',
     'user'                 => 'USER',
+    'users_roles_permissions' => 'Users, Roles, Permissions',
     'logout'               => 'Logout',
     'login'                => 'Login',
     'register'             => 'Register',

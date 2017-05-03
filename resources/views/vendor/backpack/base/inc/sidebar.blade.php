@@ -50,12 +50,12 @@
           </li>
           <!-- Users, Roles Permissions -->
           <li class="treeview">
-            <a href="#"><i class="fa fa-group"></i> <span>Users, Roles, Permissions</span> <i class="fa fa-angle-{!! $right !!} pull-{!! $right !!}"></i></a>
+            <a href="#"><i class="fa fa-group"></i> <span>{{ trans('backpack::base.users_roles_permissions') }}</span> <i class="fa fa-angle-{!! $right !!} pull-{!! $right !!}"></i></a>
             <ul class="treeview-menu">
-              <li><a href="{{ url('admin/user') }}"><i class="fa fa-user"></i> <span>Users</span></a></li>
-              <li><a href="{{ url('admin/role') }}"><i class="fa fa-group"></i> <span>Roles</span></a></li>
-              <li><a href="{{ url('admin/permission') }}"><i class="fa fa-key"></i> <span>Permissions</span></a></li>
-              <li><a href="{{ url('admin/salerytype') }}"><i class="fa fa-key"></i> <span>Salery Types</span></a></li>
+              <li><a href="{{ url('admin/user') }}"><i class="fa fa-user"></i> <span>{{trans('permissionmanager.users')}}</span></a></li>
+              <li><a href="{{ url('admin/role') }}"><i class="fa fa-group"></i> <span>{{trans('permissionmanager.roles')}}</span></a></li>
+              <li><a href="{{ url('admin/permission') }}"><i class="fa fa-key"></i> <span>{{trans('permissionmanager.permission_plural')}}</span></a></li>
+              <li><a href="{{ url('admin/salerytype') }}"><i class="fa fa-key"></i> <span>{{trans('pos.people.employee.salery_types')}}</span></a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -66,18 +66,18 @@
               <!-- ==== Recommended place for admin menu items ==== -->
               <!-- ================================================ -->
               <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/dashboard') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.dashboard') }}</span></a></li>
-              <li><a href="{{ url(config('backpack.base.route_prefix', 'admin') . '/elfinder') }}"><i class="fa fa-files-o"></i> <span>File manager</span></a></li>
+              <li><a href="{{ url(config('backpack.base.route_prefix', 'admin') . '/elfinder') }}"><i class="fa fa-files-o"></i> <span>{{ trans('backpack::crud.file_manager') }}</span></a></li>
               <li class="treeview">
-                <a href="#"><i class="fa fa-globe"></i> <span>Translations</span> <i class="fa fa-angle-{!! $right !!} pull-{!! $right !!}"></i></a>
+                <a href="#"><i class="fa fa-globe"></i> <span>{{ trans('backpack::langfilemanager.translations') }}</span> <i class="fa fa-angle-{!! $right !!} pull-{!! $right !!}"></i></a>
                 <ul class="treeview-menu">
-                  <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/language') }}"><i class="fa fa-flag-checkered"></i> Languages</a></li>
-                  <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/language/texts') }}"><i class="fa fa-language"></i> Site texts</a></li>
+                  <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/language') }}"><i class="fa fa-flag-checkered"></i> {{ trans('backpack::langfilemanager.languages') }}</a></li>
+                  <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/language/texts') }}"><i class="fa fa-language"></i> {{ trans('backpack::langfilemanager.site_texts') }}</a></li>
                 </ul>
               </li>
-              <li><a href="{{ url('admin/backup') }}"><i class="fa fa-hdd-o"></i> <span>Backups</span></a></li>
-              <li><a href="{{ url('admin/log') }}"><i class="fa fa-terminal"></i> <span>Logs</span></a></li>
-              <li><a href="{{ url('admin/setting') }}"><i class="fa fa-cog"></i> <span>Settings</span></a></li>
-              <li><a href="{{ url('admin/page') }}"><i class="fa fa-file-o"></i> <span>Pages</span></a></li>
+              <li><a href="{{ url('admin/backup') }}"><i class="fa fa-hdd-o"></i> <span>{{ trans('backpack::backup.backup') }}</span></a></li>
+              <li><a href="{{ url('admin/log') }}"><i class="fa fa-terminal"></i> <span>{{ trans('backpack::logmanager.logs') }}</span></a></li>
+              <li><a href="{{ url('admin/setting') }}"><i class="fa fa-cog"></i> <span>{{ trans('backpack::settings.setting_plural') }}</span></a></li>
+              {{-- <li><a href="{{ url('admin/page') }}"><i class="fa fa-file-o"></i> <span>{{ trans('backpack::backup.backup') }}</span></a></li> --}}
             </ul>
           </li>
           

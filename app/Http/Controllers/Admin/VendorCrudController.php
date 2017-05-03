@@ -23,7 +23,7 @@ class VendorCrudController extends CrudController
 		*/
         $this->crud->setModel("App\Models\Vendor");
         $this->crud->setRoute("admin/vendor");
-        $this->crud->setEntityNameStrings('vendor', 'vendors');
+        $this->crud->setEntityNameStrings(trans('pos.catalog.vendor.vendor'), trans('pos.catalog.vendor.vendors'));
 
         /*
 		|--------------------------------------------------------------------------
@@ -33,12 +33,12 @@ class VendorCrudController extends CrudController
         $show_fields = [
             [
                 'name' => 'company_name', // The db column name
-                'label' => "Company Name", // Table column heading
+                'label' => trans('pos.catalog.vendor.vendor_name'), // Table column heading
                 'type' => 'Text'
             ],
             [
                // n-n relationship (with pivot table)
-               'label' => "Contacts", // Table column heading
+               'label' => trans('pos.people.contact.contacts'), // Table column heading
                'type' => "select_multiple",
                'name' => 'contacts', // the method that defines the relationship in your Model
                'entity' => 'contacts', // the method that defines the relationship in your Model

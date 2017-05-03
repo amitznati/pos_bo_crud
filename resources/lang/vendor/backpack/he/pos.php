@@ -80,6 +80,7 @@
             "add_salery" => "הוסף שכר",
             "update_salery" => "עדכן שכר",
             "salery_type" => "סוג שכר",
+            "salery_types" => "סוגי שבר",
             "amount" => "סכום",
         ],
         "contact" => [
