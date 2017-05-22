@@ -17,7 +17,7 @@ class CreatePropertiesTable extends Migration
             $table->increments('id');
             $table->morphs('propertyable');
             $table->integer('type')->unsigned();
-            $table->string('value')->nullable();
+            $table->longText('valid_values')->nullable();
             $table->boolean('mandatory')->default(false);
             $table->timestamps();
 

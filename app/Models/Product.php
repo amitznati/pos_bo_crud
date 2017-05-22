@@ -101,6 +101,11 @@ class Product extends Model
     {
         return $this->morphMany(\App\Models\DisplayInfo::class, 'displayable');
     }
+
+    public function properties()
+    {
+        return $this->morphMany(\App\Models\Property::class, 'properyable');
+    }
 	
     /*
 	|--------------------------------------------------------------------------

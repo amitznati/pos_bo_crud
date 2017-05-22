@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\View;
 use App\Http\Requests\ProductRequest as StoreRequest;
 use App\Http\Requests\ProductRequest as UpdateRequest;
 use App\Models\Department;
+use App\Models\PropertyType;
 
 class ProductCrudController extends CrudController
 {
@@ -203,6 +204,7 @@ class ProductCrudController extends CrudController
 		$this->data['fields'] = $this->crud->getCreateFields();
 		$this->data['title'] = trans('backpack::crud.add').' '.$this->crud->entity_name;
 		$this->data['departments'] = Department::all();
+        $this->data['property_types'] = PropertyType::all();
 		//xdebug_break();
 		// load the view from /resources/views/vendor/backpack/crud/ if it exists, otherwise load the one in the package
 		return view($this->crud->getCreateView(), $this->data);
