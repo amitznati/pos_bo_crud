@@ -44,14 +44,38 @@
 		      	@include('crud::form_content', [ 'fields' => $crud->getFields('create'), 'action' => 'create' ])
 		      	<div class="form-group col-md-12">
 					<label>Properties</label>
-					<div id="propery_row" class="row">
+					<div class="row">
 						<div class="col-md-12">
 							<a data-bind="click: addProperty" class="btn btn-pripary" ><i class="fa fa-plus"></i> Add Property</a>
 						</div>
-					</div>
-					<div data-bind="foreach: properties">
-					
-							<propery-widget></propery-widget>
+
+						<div data-bind='foreach: { data: properties, includeDestroyed: true }'>
+						
+								<div class="col-md-12">
+									<div class="row">		
+										<div class="form-group col-xs-3">
+											<label>Property name</label>
+											<input data-bind="value: name" class="form-control" type="text" name="">
+										</div>
+										<div class="form-group col-xs-3">
+										<label>Property Type</label>
+											<select data-bind="options: $root.property_types(),optionsText: 'name',value: type" class="form-control"></select>
+										</div>
+										<div class="form-group col-xs-3">
+											<label>Valid Values</label>
+											<input data-bind="value: values" class="form-control" type="text" name="">
+										</div>
+										<div class="form-group col-xs-2">
+											<label>Is Mandatory?</label><br>
+											<input data-bind="value: isMandatory" type="checkbox" name="vehicle" value="Bike">
+										</div>
+										<div class="form-group col-xs-1">
+											<a data-bind="click: $root.deleteProperty" class="btn btn-danger btn-xs" ><i class="fa fa-trash"></i></a>
+										</div>
+									</div>
+								</div>
+						
+						</div>
 						
 					</div>
 				</div>
@@ -67,35 +91,7 @@
 		  {!! Form::close() !!}
 	</div>
 </div>
-<template id="propery-template">
-	<div class="col-md-12">
-		<div class="row">		
-			<div class="form-group col-xs-3">
-				<label>Property name</label>
-				<input class="form-control" type="text" name="">
-			</div>
-			<div class="form-group col-xs-3">
-			<label>Property Type</label>
-				<select class="property_types form-control">
-					@foreach($property_types as $propertyType)
-						<option value="{!!$propertyType->id!!}">{!!$propertyType->name!!}</option>
-					@endforeach
-				</select>
-			</div>
-			<div class="form-group col-xs-3">
-				<label>Valid Values</label>
-				<input class="form-control" type="text" name="">
-			</div>
-			<div class="form-group col-xs-2">
-				<label>Is Mandatory?</label><br>
-				<input type="checkbox" name="vehicle" value="Bike">
-			</div>
-			<div class="form-group col-xs-1">
-				<a data-bind="click: $root.deleteProperty" class="btn btn-danger btn-xs" ><i class="fa fa-trash"></i></a>
-			</div>
-		</div>
-	</div>
-</template>
+
 
 <script type="text/javascript">
 	document.addEventListener("DOMContentLoaded", function(event) { 
@@ -126,19 +122,6 @@
         }); 
     }
 
-    $('#add_property').click(function(){
-    	var template = $('#propery-template').html();
-
-
-    	$('.delete_property').click(function(){
-    		console.log($(this).parent().parent());
-	    	//$(this).parent().parent().remove();
-	    });
-    	
-
-	    $('#propery_row').append(template);
-    });
-
     
     
 
@@ -149,41 +132,30 @@
 
 <script type="text/javascript">
 	
-	ko.components.register('propery-widget', {
-	    viewModel: function(params) {
-	        // Data: value is either null, 'like', or 'dislike'
-	        this.name = name;
-	    this.type = ko.observable();
-	    this.values = ko.observable();
-	         
-	        // Behaviors
-	        this.like = function() { this.chosenValue('like'); }.bind(this);
-	        this.dislike = function() { this.chosenValue('dislike'); }.bind(this);
-	    },
-	    template: { element: 'propery-template'}
-	});
 
 	function Property() {
-	    this.name = name;
+	    this.name = ko.observable();
 	    this.type = ko.observable();
 	    this.values = ko.observable();
+	    this.isMandatory = ko.observable();
 	}
 	 
 	function MyViewModel() {
 		self = this;
-	    this.properties = ko.observableArray();
+	    this.properties = ko.observableArray([]);
+	    this.property_types = ko.observableArray({!!$property_types!!});
 
 	    this.deleteProperty = function(item) {
-	    	self.properties.remove(item);
-	    	console.log(item);
-	    	console.log(self.properties());
+	    	console.log(item.name())
+			//self.properties.remove(item);
+
+		};
+
+		this.addProperty = function(prop){
+			self.properties.push(new Property());
 		};
 	}
 	 
-	MyViewModel.prototype.addProperty = function() {
-	    this.properties.push(new Property());
-	};
-
 
 	ko.applyBindings(new MyViewModel());
 </script>
