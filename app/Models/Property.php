@@ -20,10 +20,11 @@ class Property extends Model
 
 
     public $fillable = [
+        'name',
         'propertyable_id',
         'propertyable_type',
         'type',
-        'value',
+        'valid_values',
         'mandatory'
     ];
 
@@ -33,11 +34,12 @@ class Property extends Model
      * @var array
      */
     protected $casts = [
+        'name' => 'string',
         'id' => 'integer',
         'propertyable_id' => 'integer',
         'propertyable_type' => 'string',
         'type' => 'integer',
-        'value' => 'string',
+        'valid_values' => 'string',
         'mandatory' => 'boolean'
     ];
 

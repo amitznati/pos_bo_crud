@@ -21,7 +21,8 @@ class PropertyType extends Model
 
 
     public $fillable = [
-        'name'
+        'name',
+        'options_required'
     ];
 
     /**
@@ -31,7 +32,8 @@ class PropertyType extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'name' => 'string'
+        'name' => 'string',
+        'options_required' => 'boolean'
     ];
 
     /**

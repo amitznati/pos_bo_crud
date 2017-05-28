@@ -11,6 +11,8 @@ use App\Http\Requests\ProductRequest as StoreRequest;
 use App\Http\Requests\ProductRequest as UpdateRequest;
 use App\Models\Department;
 use App\Models\PropertyType;
+use App\Models\Property;
+use Illuminate\Support\Facades\App;
 
 class ProductCrudController extends CrudController
 {
@@ -177,6 +179,21 @@ class ProductCrudController extends CrudController
         $redirect_location = parent::storeCrud();
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
+		$properties = json_decode($request->all()['properties']);
+		
+		foreach ($properties as $property)
+		{
+			$prop = [
+					'name' => $property->name,
+					'type' => $property->type,
+					'valid_values' => $property->valid_values,
+					'mandatory' => $property->mandatory,
+			];
+			$saveProp = new Property($prop);
+			$saveProp->propertyable_id = $this->crud->entry->id;
+			$saveProp->propertyable_type = 'App\\Models\\Product';
+			$saveProp->save();
+		}
         return $redirect_location;
 	}
 

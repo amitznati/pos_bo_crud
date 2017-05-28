@@ -27,7 +27,7 @@
 
 		@include('crud::inc.grouped_errors')
 
-		  {!! Form::open(array('url' => $crud->route, 'method' => 'post', 'files'=>$crud->hasUploadFields('create'))) !!}
+		  {!! Form::open(array('url' => $crud->route, 'method' => 'post', 'files'=>true)) !!}
 		  <div class="box">
 
 		    <div class="box-header with-border">
@@ -50,31 +50,35 @@
 						</div>
 
 						<div data-bind='foreach: { data: properties, includeDestroyed: true }'>
-						
+
 								<div class="col-md-12">
 									<div class="row">		
-										<div class="form-group col-xs-3">
+										<div class="form-group col-xs-6">
 											<label>Property name</label>
-											<input data-bind="value: name" class="form-control" type="text" name="">
+											<input data-bind="value: name" class="form-control" type="text" >
 										</div>
-										<div class="form-group col-xs-3">
-										<label>Property Type</label>
-											<select data-bind="options: $root.property_types(),optionsText: 'name',value: type" class="form-control"></select>
+										<div class="form-group col-xs-6">
+											<label>Property Type</label>
+											<select  data-bind="options: $root.property_types(),optionsText: 'name',value: selectedType" class="form-control"></select>
 										</div>
-										<div class="form-group col-xs-3">
-											<label>Valid Values</label>
-											<input data-bind="value: values" class="form-control" type="text" name="">
+									</div>
+									<div class="row">
+										<div class="form-group col-xs-6">
+											<label>Valid Values<br><small> separete the options by ',' i.e. option1,option2,...</small></label>
+											<input data-bind="value: valid_values,enable: valuesEnable" class="form-control" type="text" >
 										</div>
-										<div class="form-group col-xs-2">
+										<div class="form-group col-xs-6">
 											<label>Is Mandatory?</label><br>
-											<input data-bind="value: isMandatory" type="checkbox" name="vehicle" value="Bike">
+											<input data-bind="checked: mandatory" type="checkbox" >
 										</div>
+									</div>
+									<div class="row">
 										<div class="form-group col-xs-1">
 											<a data-bind="click: $root.deleteProperty" class="btn btn-danger btn-xs" ><i class="fa fa-trash"></i></a>
 										</div>
 									</div>
+									
 								</div>
-						
 						</div>
 						
 					</div>
@@ -88,10 +92,13 @@
 		    </div><!-- /.box-footer-->
 
 		  </div><!-- /.box -->
+		  <input name="properties" type="hidden" data-bind="value: ko.toJSON(properties(), null, 2)">
 		  {!! Form::close() !!}
 	</div>
 </div>
+{{-- @endsection
 
+@section('after_scripts') --}}
 
 <script type="text/javascript">
 	document.addEventListener("DOMContentLoaded", function(event) { 
@@ -134,10 +141,25 @@
 	
 
 	function Property() {
+		self = this;
 	    this.name = ko.observable();
-	    this.type = ko.observable();
-	    this.values = ko.observable();
-	    this.isMandatory = ko.observable();
+	    this.type = 1;
+	    this.valid_values = ko.observable();
+	    this.mandatory = ko.observable(false);
+	    this.selectedType = ko.observable();
+	    this.valuesEnable = ko.pureComputed(function() {
+	    	if(self.selectedType())
+	    	{
+	    		self.type = self.selectedType()['id'];
+		        if(!self.selectedType()['options_required'])
+		        {
+		        	self.valid_values('');
+		        	return false;
+		        }
+	    	}
+	        return true;
+
+	    }, this);
 	}
 	 
 	function MyViewModel() {
@@ -147,8 +169,6 @@
 
 	    this.deleteProperty = function(item) {
 	    	console.log(item.name())
-			//self.properties.remove(item);
-
 		};
 
 		this.addProperty = function(prop){
@@ -156,7 +176,6 @@
 		};
 	}
 	 
-
 	ko.applyBindings(new MyViewModel());
 </script>
 @endsection
