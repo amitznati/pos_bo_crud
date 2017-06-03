@@ -112,7 +112,7 @@
     <script src="{{ asset('vendor/adminlte'.$localeStr.'/') }}/plugins/fastclick/fastclick.js"></script>
     <script src="{{ asset('vendor/adminlte'.$localeStr.'/') }}/dist/js/app.min.js"></script>
 
-    <!-- page script -->
+    {{-- page script --}}
     <script type="text/javascript">
         // To make Pace works on Ajax calls
         $(document).ajaxStart(function() { Pace.restart(); });
@@ -137,6 +137,7 @@
     @include('backpack::inc.alerts')
 
     @yield('after_scripts')
+    @yield('after_scripts2')
 
     <!-- JavaScripts -->
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}

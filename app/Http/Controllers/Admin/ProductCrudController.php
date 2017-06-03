@@ -38,7 +38,10 @@ class ProductCrudController extends CrudController
             [
                 'name' => 'name', // The db column name
                 'label' => trans('pos.catalog.product.product_name'), // Table column heading
-                'type' => 'Text'
+                'type' => 'Text',
+                'attributes' => [
+                    'required' => '',
+                ]
             ],
             [
                // 1-n relationship
@@ -48,6 +51,9 @@ class ProductCrudController extends CrudController
                'entity' => 'department', // the method that defines the relationship in your Model
                'attribute' => "name", // foreign key attribute that is shown to user
                'model' => "App\Models\Department", // foreign key model
+               'attributes' => [
+                    'required' => '',
+                ]
             ],
             [
                // 1-n relationship
@@ -57,6 +63,9 @@ class ProductCrudController extends CrudController
                'entity' => 'group', // the method that defines the relationship in your Model
                'attribute' => "name", // foreign key attribute that is shown to user
                'model' => "App\Models\Group", // foreign key model
+               'attributes' => [
+                    'required' => '',
+                ]
             ],
             [   // Number
                 'name' => 'sale_price',
@@ -65,6 +74,9 @@ class ProductCrudController extends CrudController
                 // optionals
                  'prefix' => "$",
                 // 'suffix' => ".00",
+                 'attributes' => [
+                    'required' => '',
+                ]
             ],
             [   // Number
                 'name' => 'bay_price',
@@ -117,6 +129,7 @@ class ProductCrudController extends CrudController
         $this->crud->addColumns($all_fields);
 
         $this->crud->setCreateView('products/create');
+        $this->crud->setEditView('products/edit');
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
         // $this->crud->setColumnDetails('column_name', ['attribute' => 'value']); // adjusts the properties of the passed in column (by name)
@@ -173,6 +186,22 @@ class ProductCrudController extends CrudController
         // $this->crud->limit();
     }
 
+    private function saveProperties($properties,$id)
+    {
+        foreach ($properties as $property)
+        {
+            $prop = [
+                    'name' => $property->name,
+                    'type' => $property->type,
+                    'valid_values' => isset($property->valid_values) ? $property->valid_values : null,
+                    'mandatory' => $property->mandatory,
+            ];
+            $saveProp = new Property($prop);
+            $saveProp->propertyable_id = $id;
+            $saveProp->propertyable_type = 'App\\Models\\Product';
+            $saveProp->save();
+        }
+    }
 	public function store(StoreRequest $request)
 	{
 		// your additional operations before save here
@@ -180,20 +209,9 @@ class ProductCrudController extends CrudController
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
 		$properties = json_decode($request->all()['properties']);
+
+		$this->saveProperties($properties,$this->crud->entry->id);
 		
-		foreach ($properties as $property)
-		{
-			$prop = [
-					'name' => $property->name,
-					'type' => $property->type,
-					'valid_values' => $property->valid_values,
-					'mandatory' => $property->mandatory,
-			];
-			$saveProp = new Property($prop);
-			$saveProp->propertyable_id = $this->crud->entry->id;
-			$saveProp->propertyable_type = 'App\\Models\\Product';
-			$saveProp->save();
-		}
         return $redirect_location;
 	}
 
@@ -201,8 +219,13 @@ class ProductCrudController extends CrudController
 	{
 		// your additional operations before save here
         $redirect_location = parent::updateCrud();
+
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
+        $this->crud->entry->properties()->delete();
+        $properties = json_decode($request->all()['properties']);
+        $this->saveProperties($properties,$this->crud->entry->id);
+
         return $redirect_location;
 	}
 	
@@ -226,4 +249,11 @@ class ProductCrudController extends CrudController
 		// load the view from /resources/views/vendor/backpack/crud/ if it exists, otherwise load the one in the package
 		return view($this->crud->getCreateView(), $this->data);
 	}
+
+    public function edit($id)
+    {
+        $this->data['departments'] = Department::all();
+        $this->data['property_types'] = PropertyType::all();
+        return parent::edit($id);
+    }
 }

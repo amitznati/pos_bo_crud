@@ -52,16 +52,18 @@ class Property extends Model
         
     ];
 
+    protected $with = ['propertyType'];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
     public function propertyType()
     {
-        return $this->belongsTo(\App\Models\PropertyType::class);
+        return $this->belongsTo(\App\Models\PropertyType::class,'type');
     }
 
-    public function properyable()
+    public function propertyable()
     {
-        return $this->morphTo('properyable');
+        return $this->morphTo('propertyable');
     }
 }
