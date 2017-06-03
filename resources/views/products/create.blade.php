@@ -2,6 +2,7 @@
 
 @section('after_styles')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+    {!! Html::style('css/parsley.css') !!}
 @endsection
 
 @section('header')
@@ -43,6 +44,7 @@
 
 		      	@include('crud::form_content', [ 'fields' => $crud->getFields('create'), 'action' => 'create' ])
 		      	<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
 					<label>Properties</label>
 					<div class="row">
 						<div class="col-md-12">
@@ -55,17 +57,17 @@
 									<div class="row">		
 										<div class="form-group col-xs-6">
 											<label>Property name</label>
-											<input data-bind="value: name" class="form-control" type="text" >
+											<input required="" data-bind="value: name" class="form-control" type="text" >
 										</div>
 										<div class="form-group col-xs-6">
 											<label>Property Type</label>
-											<select  data-bind="options: $root.property_types(),optionsText: 'name',value: selectedType" class="form-control"></select>
+											<select  data-bind="options: $root.property_types,optionsText: 'name',value: type,optionsValue: 'id',event:{ change: $root.typeChanged}" class="form-control"></select>
 										</div>
 									</div>
 									<div class="row">
 										<div class="form-group col-xs-6">
 											<label>Valid Values<br><small> separete the options by ',' i.e. option1,option2,...</small></label>
-											<input data-bind="value: valid_values,enable: valuesEnable" class="form-control" type="text" >
+											<input required="" data-bind="value: options_required() ? valid_values : '',enable: options_required" class="form-control" type="text" >
 										</div>
 										<div class="form-group col-xs-6">
 											<label>Is Mandatory?</label><br>
@@ -84,55 +86,52 @@
 					</div>
 				</div>
 		      @endif
-		    </div><!-- /.box-body -->
-		    <div class="box-footer">
+			</div>
+			<!-- /.box-body -->
+
+            <div class="box-footer">
 
                 @include('crud::inc.form_save_buttons')
 
 		    </div><!-- /.box-footer-->
-
 		  </div><!-- /.box -->
 		  <input name="properties" type="hidden" data-bind="value: ko.toJSON(properties(), null, 2)">
 		  {!! Form::close() !!}
 	</div>
 </div>
-{{-- @endsection
+@endsection
 
-@section('after_scripts') --}}
-
+@section('after_scripts2')
+{!! Html::script('js/parsley.min.js') !!}
 <script type="text/javascript">
 	document.addEventListener("DOMContentLoaded", function(event) { 
 	
-   	var departments = {!! $departments !!};
-  
-    ddDept = $('select[name="dept_id"]');
-    ddgroup = $('select[name="group_id"]');
+	   	var departments = {!! $departments !!};
+	  
+	    ddDept = $('select[name="dept_id"]');
+	    ddgroup = $('select[name="group_id"]');
 
-    ddDept.on('change', function() { 
-        setGroups(ddDept.val())
-    });
+	    ddDept.on('change', function() { 
+	        setGroups(ddDept.val())
+	    });
 
-    function setGroups(dept_id)
-    {
-        ddgroup.empty(); 
-        if(window.location.pathname == '/products/' || window.location.pathname == '/products')
-        {
-            ddgroup.prepend("<option value='0'>All</option>").val('0');
-        }
-        departments.forEach(function(department){
-            if(dept_id == department.id)
-                department.groups.forEach(function(group){
-                    var option = $('<option></option>').attr("value", group.id).text(group.name);
-                ddgroup.append(option);
+	    function setGroups(dept_id)
+	    {
+	        ddgroup.empty(); 
+	        if(window.location.pathname == '/products/' || window.location.pathname == '/products')
+	        {
+	            ddgroup.prepend("<option value='0'>All</option>").val('0');
+	        }
+	        departments.forEach(function(department){
+	            if(dept_id == department.id)
+	                department.groups.forEach(function(group){
+	                    var option = $('<option></option>').attr("value", group.id).text(group.name);
+	                ddgroup.append(option);
 
-            });                                
-        }); 
-    }
-
-    
-    
-
-});
+	            });                                
+	        }); 
+	    }
+	});
 
 	
 </script>
@@ -143,39 +142,38 @@
 	function Property() {
 		self = this;
 	    this.name = ko.observable();
-	    this.type = 1;
 	    this.valid_values = ko.observable();
 	    this.mandatory = ko.observable(false);
-	    this.selectedType = ko.observable();
-	    this.valuesEnable = ko.pureComputed(function() {
-	    	if(self.selectedType())
-	    	{
-	    		self.type = self.selectedType()['id'];
-		        if(!self.selectedType()['options_required'])
-		        {
-		        	self.valid_values('');
-		        	return false;
-		        }
-	    	}
-	        return true;
-
-	    }, this);
+	    this.type = ko.observable();
+	    this.options_required = ko.observable(true);
 	}
+
+
 	 
 	function MyViewModel() {
 		self = this;
+		this.property_types = ko.observableArray({!!$property_types!!});
 	    this.properties = ko.observableArray([]);
-	    this.property_types = ko.observableArray({!!$property_types!!});
-
 	    this.deleteProperty = function(item) {
-	    	console.log(item.name())
+	    	viewModel.properties.remove(item);
 		};
 
 		this.addProperty = function(prop){
-			self.properties.push(new Property());
+			viewModel.properties.push(new Property());
 		};
+
+		this.typeChanged = function(prop){
+			for(var i=0;i<viewModel.property_types().length;i++)
+			{
+				var type = viewModel.property_types()[i];
+				if(type.id == prop.type())
+					prop.options_required(type.options_required);
+			}
+		}
+
+		
 	}
-	 
-	ko.applyBindings(new MyViewModel());
+	var viewModel = new MyViewModel();
+	ko.applyBindings(viewModel);
 </script>
 @endsection
