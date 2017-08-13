@@ -124,9 +124,9 @@
 
                 this.showItemSelect = function(){
                     self.itemSelectVisible(!self.itemSelectVisible());
-                    self.showText({{trans('pos.menu_display.menu_design.add_new_item')}});
+                    self.showText('{{trans('pos.menu_display.menu_design.add_new_item')}}');
                     if(self.itemSelectVisible())
-                        self.showText({{trans('pos.menu_display.menu_design.cancel_add_new_item')}});
+                        self.showText('{{trans('pos.menu_display.menu_design.cancel_add_new_item')}}');
                 }
 
                 this.save = function(){
