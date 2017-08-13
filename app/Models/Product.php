@@ -54,6 +54,10 @@ class Product extends Model
         'description' => 'string'
     ];
 
+    public static $rules = [
+        
+    ];
+
     /*
 	|--------------------------------------------------------------------------
 	| FUNCTIONS
@@ -104,7 +108,7 @@ class Product extends Model
 
     public function properties()
     {
-        return $this->morphMany(\App\Models\Property::class, 'properyable');
+        return $this->morphMany(\App\Models\Property::class, 'propertyable');
     }
 	
     /*

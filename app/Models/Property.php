@@ -20,10 +20,11 @@ class Property extends Model
 
 
     public $fillable = [
+        'name',
         'propertyable_id',
         'propertyable_type',
         'type',
-        'value',
+        'valid_values',
         'mandatory'
     ];
 
@@ -33,11 +34,12 @@ class Property extends Model
      * @var array
      */
     protected $casts = [
+        'name' => 'string',
         'id' => 'integer',
         'propertyable_id' => 'integer',
         'propertyable_type' => 'string',
         'type' => 'integer',
-        'value' => 'string',
+        'valid_values' => 'string',
         'mandatory' => 'boolean'
     ];
 
@@ -50,16 +52,18 @@ class Property extends Model
         
     ];
 
+    protected $with = ['propertyType'];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
     public function propertyType()
     {
-        return $this->belongsTo(\App\Models\PropertyType::class);
+        return $this->belongsTo(\App\Models\PropertyType::class,'type');
     }
 
-    public function properyable()
+    public function propertyable()
     {
-        return $this->morphTo('properyable');
+        return $this->morphTo('propertyable');
     }
 }

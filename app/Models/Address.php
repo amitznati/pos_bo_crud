@@ -24,34 +24,39 @@ class Address extends Model
 
     protected $dates = ['deleted_at'];
 
-    public static $create_fields = [
-        [
-            'name' => 'city', // The db column name
-            'label' => trans('pos.people.address.city'), // Table column heading
-            'type' => 'Text'
-        ],
-        [
-            'name' => 'street_name', // The db column name
-            'label' => trans('pos.people.address.street_name'), // Table column heading
-            'type' => 'Text'
-        ],        
-        [
-            'name' => 'street_number', // The db column name
-            'label' => trans('pos.people.address.street_number'), // Table column heading
-            'type' => 'number'
-        ],
-        [
-            'name' => 'hous_number', // The db column name
-            'label' => trans('pos.people.address.hous_number'), // Table column heading
-            'type' => 'number'
-        ],
-        [
-            'name' => 'zip', // The db column name
-            'label' => trans('pos.people.address.zip'), // Table column heading
-            'type' => 'number'
-        ],
+    public static function getShowFields()
+    {
 
-    ];
+        $create_fields = [
+            [
+                'name' => 'city', // The db column name
+                'label' => trans('pos.people.address.city'), // Table column heading
+                'type' => 'Text'
+            ],
+            [
+                'name' => 'street_name', // The db column name
+                'label' => trans('pos.people.address.street_name'), // Table column heading
+                'type' => 'Text'
+            ],        
+            [
+                'name' => 'street_number', // The db column name
+                'label' => trans('pos.people.address.street_number'), // Table column heading
+                'type' => 'number'
+            ],
+            [
+                'name' => 'hous_number', // The db column name
+                'label' => trans('pos.people.address.hous_number'), // Table column heading
+                'type' => 'number'
+            ],
+            [
+                'name' => 'zip', // The db column name
+                'label' => trans('pos.people.address.zip'), // Table column heading
+                'type' => 'number'
+            ],
+
+        ];
+        return $create_fields;
+    }
 
     public $fillable = [
         'street_name',

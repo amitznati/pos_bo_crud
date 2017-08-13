@@ -41,13 +41,7 @@
               <li><a href="{{ url('admin/contact') }}"><i class="fa fa-tag"></i> <span>{{trans('pos.people.contact.contacts')}}</span></a></li> 
             </ul>
           </li>
-          <li class="treeview">
-            <a href="#"><i class="fa fa-wrench"></i> <span>{{trans('pos.stores.stores')}}</span> <i class="fa fa-angle-{{$right}} pull-{{$right}}"></i></a>
-            <ul class="treeview-menu">
-              <li><a href="{{ url('admin/store') }}"><i class="fa fa-tag"></i> <span>{{trans('pos.stores.stores')}}</span></a></li>
-              <li><a href="{{ url('admin/pos') }}"><i class="fa fa-tag"></i> <span>{{trans('pos.stores.pos.poss')}}</span></a></li>
-            </ul>
-          </li>
+          
           <!-- Users, Roles Permissions -->
           <li class="treeview">
             <a href="#"><i class="fa fa-group"></i> <span>{{ trans('backpack::base.users_roles_permissions') }}</span> <i class="fa fa-angle-{!! $right !!} pull-{!! $right !!}"></i></a>
@@ -77,6 +71,13 @@
               <li><a href="{{ url('admin/backup') }}"><i class="fa fa-hdd-o"></i> <span>{{ trans('backpack::backup.backup') }}</span></a></li>
               <li><a href="{{ url('admin/log') }}"><i class="fa fa-terminal"></i> <span>{{ trans('backpack::logmanager.logs') }}</span></a></li>
               <li><a href="{{ url('admin/setting') }}"><i class="fa fa-cog"></i> <span>{{ trans('backpack::settings.setting_plural') }}</span></a></li>
+              <li class="treeview">
+                <a href="#"><i class="fa fa-wrench"></i> <span>{{trans('pos.stores.stores')}}</span> <i class="fa fa-angle-{{$right}} pull-{{$right}}"></i></a>
+                <ul class="treeview-menu">
+                  <li><a href="{{ url('admin/store') }}"><i class="fa fa-tag"></i> <span>{{trans('pos.stores.stores')}}</span></a></li>
+                  <li><a href="{{ url('admin/pos') }}"><i class="fa fa-tag"></i> <span>{{trans('pos.stores.pos.poss')}}</span></a></li>
+                </ul>
+              </li>
               {{-- <li><a href="{{ url('admin/page') }}"><i class="fa fa-file-o"></i> <span>{{ trans('backpack::backup.backup') }}</span></a></li> --}}
             </ul>
           </li>
