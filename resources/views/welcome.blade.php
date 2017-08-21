@@ -10,6 +10,8 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
+        <link rel="stylesheet" href="{{ asset('css') }}/jquery.bxslider.min.css">
+
         <!-- Styles -->
         <style>
             html, body {
@@ -62,6 +64,9 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            .myslider{
+                height: 200px;
+            }
         </style>
     </head>
     <body>
@@ -85,7 +90,32 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
+
+                
             </div>
+            
         </div>
+        <div class="myslider">
+                    <ul class="bxslider">
+                      <li><img src="{{ asset('images') }}/2.png" /></li>
+                      <li><img src="{{ asset('images') }}/3.png" /></li>
+                    </ul>
+                </div>
+
+
+        <!-- jQuery 2.2.0 -->
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    {{-- <script>window.jQuery || document.write('<script src="{{ asset('vendor/adminlte') }}/plugins/jQuery/jQuery-2.2.0.min.js"><\/script>')</script> --}}
+    <!-- Bootstrap 3.3.5 -->
+    <script src="{{ asset('js') }}/jquery.bxslider.min.js"></script>
+
+    <script type="text/javascript">
+        
+        $('.bxslider').bxSlider({
+          auto: true,
+          autoControls: true,
+          useCSS: false
+        });
+    </script>
     </body>
 </html>

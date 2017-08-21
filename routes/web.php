@@ -41,3 +41,12 @@ Route::group([
     CRUD::resource('store', 'StoreCrudController');
     CRUD::resource('pos', 'PosCrudController');
 });
+
+Route::group([
+    'prefix' => 'pos',
+    'middleware' => 'App\Http\Middleware\pos\POSMiddleware',
+    'namespace' => 'POS'
+], function() {
+    Route::get('home',['as' => 'pos.index', 'uses' => 'POSController@index']);
+    Route::get('pos',['as' => 'pos.pos', 'uses' => 'POSController@pos']);
+});
