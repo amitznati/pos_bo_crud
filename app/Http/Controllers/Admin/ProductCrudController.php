@@ -188,6 +188,8 @@ class ProductCrudController extends CrudController
 
     private function saveProperties($properties,$id)
     {
+        if(!isset($properties))
+            return;
         foreach ($properties as $property)
         {
             $prop = [

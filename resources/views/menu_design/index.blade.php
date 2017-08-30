@@ -43,7 +43,7 @@
         <div class="grid-stack-div">                  
             <div class="clearfix"></div>
             <div class="box box-primary">
-                <div class="box-body" style="height: 720px;">
+                <div class="box-body" style="height: 600px;">
                     <div class="row-fluid" >
                         <div class="col-sm-12">
                             <div data-bind="visible: itemSelectVisible()==false, component: {name: 'dashboard-grid', params: $data}"></div>
@@ -80,7 +80,7 @@
                                 grid = $(componentInfo.element).find('.grid-stack').gridstack({
                                     auto: false,
                                     float: true,
-                                    height: 9
+                                    height: 7
                                 }).data('gridstack');
                             }
                             
