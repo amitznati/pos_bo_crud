@@ -21,15 +21,15 @@ class PosTableSeeder extends Seeder
             array (
                 'name' => 'pos1',
                 'store_id' => 1,
-                'created_at' => '2017-04-26 05:33:21',
-                'updated_at' => '2017-04-26 05:33:21',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s"),
             ),
             1 => 
             array (
                 'name' => 'pos2',
                 'store_id' => 1,
-                'created_at' => '2017-04-26 05:33:43',
-                'updated_at' => '2017-04-26 05:33:43',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s"),
             ),
         ));
         

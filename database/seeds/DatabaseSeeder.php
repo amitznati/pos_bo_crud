@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(StoresTableSeeder::class);
         $this->call(PosTableSeeder::class);
         $this->call(LanguageTableSeeder::class);
+        $this->call(PropertyTypesTableSeeder::class);
     }
 }

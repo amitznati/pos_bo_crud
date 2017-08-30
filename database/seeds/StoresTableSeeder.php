@@ -20,8 +20,8 @@ class StoresTableSeeder extends Seeder
             0 => 
             array (
                 'name' => 'Store1',
-                'created_at' => '2017-04-26 05:23:28',
-                'updated_at' => '2017-04-26 05:23:28',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s"),
             ),
         ));
         

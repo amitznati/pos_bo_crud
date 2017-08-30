@@ -20,23 +20,20 @@ class SaleryTypesTableSeeder extends Seeder
             0 => 
             array (
                 'name' => 'שעתי',
-                'created_at' => '2017-04-14 07:13:16',
-                'updated_at' => '2017-04-14 07:13:16',
-                'deleted_at' => NULL,
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
             ),
             1 => 
             array (
                 'name' => 'יומי',
-                'created_at' => '2017-04-14 07:14:06',
-                'updated_at' => '2017-04-14 07:14:06',
-                'deleted_at' => NULL,
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
             ),
             2 => 
             array (
                 'name' => 'חודשי',
-                'created_at' => '2017-04-14 07:14:16',
-                'updated_at' => '2017-04-14 07:14:16',
-                'deleted_at' => NULL,
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
             ),
         ));
         

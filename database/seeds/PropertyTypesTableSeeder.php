@@ -2,47 +2,42 @@
 
 use Illuminate\Database\Seeder;
 
-class RolesTableSeeder extends Seeder
-{
 
-    /**
-     * Auto generated seed file
-     *
-     * @return void
-     */
+class PropertyTypesTableSeeder extends Seeder
+{
     public function run()
     {
+        \DB::table('property_types')->delete();
         
-
-        \DB::table('roles')->delete();
-        
-        \DB::table('roles')->insert(array (
+        \DB::table('property_types')->insert(array (
             0 => 
             array (
-                'name' => 'Admin',
+                'name' => 'select',
+                'options_required' => true,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s"),
             ),
             1 => 
             array (
-                'name' => 'מנהל',
+                'name' => 'select-multi',
+                'options_required' => true,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s"),
             ),
             2 => 
             array (
-                'name' => 'מנהל משמרת',
+                'name' => 'boolean',
+                'options_required' => false,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s"),
             ),
             3 => 
             array (
-                'name' => 'מוכר',
+                'name' => 'text',
+                'options_required' => false,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s"),
             ),
         ));
-        
-        
     }
 }

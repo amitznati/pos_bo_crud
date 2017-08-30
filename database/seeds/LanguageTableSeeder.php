@@ -13,6 +13,8 @@ class LanguageTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('languages')->delete();
+
         DB::table('languages')->insert([
             'name'        => 'English',
             'flag'        => '',

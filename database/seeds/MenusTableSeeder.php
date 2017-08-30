@@ -20,9 +20,8 @@ class MenusTableSeeder extends Seeder
             0 => 
             array (
                 'name' => 'תפריט ראשי',
-                'created_at' => '2017-04-14 05:15:11',
-                'updated_at' => '2017-04-14 05:15:11',
-                'deleted_at' => NULL,
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s"),
             ),
         ));
         

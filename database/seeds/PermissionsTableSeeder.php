@@ -20,20 +20,20 @@ class PermissionsTableSeeder extends Seeder
             0 => 
             array (
                 'name' => 'פנל אדמין',
-                'created_at' => '2017-04-14 07:11:52',
-                'updated_at' => '2017-04-14 07:11:52',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s"),
             ),
             1 => 
             array (
                 'name' => 'פנל ניהול',
-                'created_at' => '2017-04-14 07:12:06',
-                'updated_at' => '2017-04-14 07:12:06',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s"),
             ),
             2 => 
             array (
                 'name' => 'סגירת קופה',
-                'created_at' => '2017-04-14 07:12:29',
-                'updated_at' => '2017-04-14 07:12:29',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s"),
             ),
         ));
         
