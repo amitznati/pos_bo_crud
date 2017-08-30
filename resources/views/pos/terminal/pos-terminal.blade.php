@@ -2,11 +2,7 @@
 
 @section('after_styles')
 <style type="text/css">
-    .row-20{
-        border: 1px solid black;
-        background-color: red;
-        height: 20%;
-    }
+    
 </style>
 @endsection
 
@@ -23,7 +19,17 @@
 
 
 @section('content')
-    <div class="row-20">
+    <div class="row">
+      <div class="col-md-4">
+         
+      </div>
+      <div class="col-md-8">
         
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-ms-12">
+        
+      </div>
     </div>
 @endsection

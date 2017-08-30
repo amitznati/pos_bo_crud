@@ -12,8 +12,8 @@ class POSController extends Controller
     	return view('pos.index');
     }
 
-    public function pos(Request $request)
+    public function terminal(Request $request)
     {
-    	return view('pos.pos');
+    	return view('pos.terminal.pos-terminal');
     }
 }

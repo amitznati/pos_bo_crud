@@ -48,5 +48,5 @@ Route::group([
     'namespace' => 'POS'
 ], function() {
     Route::get('home',['as' => 'pos.index', 'uses' => 'POSController@index']);
-    Route::get('pos',['as' => 'pos.pos', 'uses' => 'POSController@pos']);
+    Route::get('terminal',['as' => 'pos.terminal', 'uses' => 'POSController@terminal']);
 });
