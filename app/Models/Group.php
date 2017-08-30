@@ -38,6 +38,10 @@ class Group extends Model
         'name' => 'string',
         'department_id' => 'integer'
     ];
+
+    public static $rules = [
+        'name' => 'required|unique|max:255',
+    ];
     //protected $table = 'groups';
     //protected $primaryKey = 'id';
     // public $timestamps = false;

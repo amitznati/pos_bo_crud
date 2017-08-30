@@ -133,7 +133,9 @@ class Person extends Model
      * @var array
      */
     public static $rules = [
-        
+        'first_name' => 'required|max:255',
+        'last_name' => 'required|max:255',
+        'identifier' => 'required|unique|max:255',
     ];
 
     /**

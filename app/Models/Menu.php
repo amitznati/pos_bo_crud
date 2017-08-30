@@ -30,6 +30,10 @@ class Menu extends Model
         'id' => 'integer',
         'name' => 'string'
     ];
+
+    public static $rules = [
+        'name' => 'required|unique|max:255',
+    ];
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS

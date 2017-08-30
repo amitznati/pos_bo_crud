@@ -38,6 +38,10 @@ class Department extends Model
         'id' => 'integer',
         'name' => 'string'
     ];
+
+    public static $rules = [
+        'name' => 'required|unique|max:255',
+    ];
     //protected $table = 'departments';
     //protected $primaryKey = 'id';
     // public $timestamps = false;

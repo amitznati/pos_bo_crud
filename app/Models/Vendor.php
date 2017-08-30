@@ -39,6 +39,10 @@ class Vendor extends Model
         'id' => 'integer',
         'company_name' => 'string'
     ];
+
+    public static $rules = [
+        'company_name' => 'required|unique|max:255',
+    ];
     //protected $table = 'vendors';
     //protected $primaryKey = 'id';
     // public $timestamps = false;

@@ -30,6 +30,9 @@ class Pos extends Model
         'name' => 'string',
         'store_id' => 'integer',
     ];
+    public static $rules = [
+        'name' => 'required|unique|max:255',
+    ];
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS

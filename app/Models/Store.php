@@ -30,6 +30,9 @@ class Store extends Model
         'name' => 'string',
     ];
 
+    public static $rules = [
+        'name' => 'required|unique|max:255',
+    ];
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS

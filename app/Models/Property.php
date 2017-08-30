@@ -49,7 +49,7 @@ class Property extends Model
      * @var array
      */
     public static $rules = [
-        
+        'name' => 'required|unique|max:255',
     ];
 
     protected $with = ['propertyType'];

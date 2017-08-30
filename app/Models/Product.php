@@ -55,7 +55,10 @@ class Product extends Model
     ];
 
     public static $rules = [
-        
+        'name' => 'required|unique|max:255',
+        'sale_price' => 'required',
+        'dept_id' => 'required',
+        'group_id' => 'required'
     ];
 
     /*
