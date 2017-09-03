@@ -5,42 +5,39 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model as Model;
 
 /**
- * Class OrderLine
+ * Class SelectedProperty
  * @package App\Models
- * @version September 2, 2017, 9:30 pm UTC
+ * @version September 3, 2017, 7:08 am UTC
  *
- * @property \App\Models\Product product
- * @property \App\Models\Order order
+ * @property \App\Models\OrderLine orderLine
+ * @property \App\Models\Property property
  * @property \Illuminate\Database\Eloquent\Collection employeeHasPermissions
  * @property \Illuminate\Database\Eloquent\Collection employeeHasRoles
  * @property \Illuminate\Database\Eloquent\Collection employeeSalery
+ * @property \Illuminate\Database\Eloquent\Collection orderLines
  * @property \Illuminate\Database\Eloquent\Collection paymentTaxes
  * @property \Illuminate\Database\Eloquent\Collection permissionRoles
  * @property \Illuminate\Database\Eloquent\Collection permissionUsers
  * @property \Illuminate\Database\Eloquent\Collection relVandorContact
  * @property \Illuminate\Database\Eloquent\Collection roleUsers
- * @property \Illuminate\Database\Eloquent\Collection selectedProperties
- * @property integer order_id
- * @property integer product_id
- * @property float quantity
- * @property decimal product_unit_price
- * @property decimal product_total_price
+ * @property integer property_id
+ * @property integer order_line_id
+ * @property string selected_value
  */
-class OrderLine extends Model
+class SelectedProperty extends Model
 {
 
-    public $table = 'order_lines';
+    public $table = 'selected_properties';
     
-    public $timestamps = false;
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = 'updated_at';
 
 
 
     public $fillable = [
-        'order_id',
-        'product_id',
-        'quantity',
-        'product_unit_price',
-        'product_total_price'
+        'property_id',
+        'order_line_id',
+        'selected_value'
     ];
 
     /**
@@ -49,9 +46,10 @@ class OrderLine extends Model
      * @var array
      */
     protected $casts = [
-        'order_id' => 'integer',
-        'product_id' => 'integer',
-        'quantity' => 'float'
+        'id' => 'integer',
+        'property_id' => 'integer',
+        'order_line_id' => 'integer',
+        'selected_value' => 'string'
     ];
 
     /**
@@ -66,21 +64,16 @@ class OrderLine extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function product()
+    public function orderLine()
     {
-        return $this->belongsTo(\App\Models\Product::class);
+        return $this->belongsTo(\App\Models\OrderLine::class);
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function order()
+    public function property()
     {
-        return $this->belongsTo(\App\Models\Order::class);
-    }
-
-    public function selectedProperties()
-    {
-        return $this->hasMany(\App\Models\SelectedProperty::class);
+        return $this->belongsTo(\App\Models\Property::class);
     }
 }

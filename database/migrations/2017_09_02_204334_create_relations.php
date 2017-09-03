@@ -69,6 +69,10 @@ class CreateRelations extends Migration
         Schema::table('pos', function (Blueprint $table) {        
             $table->foreign('store_id', 'FK_POS_Store')->references('id')->on('stores');
         });
+        Schema::table('selected_properties', function (Blueprint $table) {        
+            $table->foreign('property_id', 'FK_SelectedPropery_Property')->references('id')->on('properties');
+            $table->foreign('order_line_id', 'FK_SelectedPropery_OrderLine')->references('id')->on('order_lines');
+        });
     }
 
     /**
