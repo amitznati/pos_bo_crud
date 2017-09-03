@@ -20,11 +20,6 @@ class CreateGroupTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-
-            $table->foreign('department_id', 'FK_Group_Department')
-                ->references('id')->on('departments')
-                ->onDelete('no action')
-                ->onUpdate('no action');
         });
     }
 

@@ -29,9 +29,6 @@ class CreateDisplayinfoTable extends Migration
             $table->longText('image')->nullable()->default(null);
             $table->string('font_size', 10)->nullable()->default(null);
 
-            $table->foreign('menu_id', 'FK_ItemDisplayInfo_Menu')
-                ->references('id')->on('menus')
-                ->onDelete('cascade');
         });
     }
 

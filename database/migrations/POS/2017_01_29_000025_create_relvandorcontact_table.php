@@ -17,16 +17,6 @@ class CreateRelvandorcontactTable extends Migration
             $table->integer('vendor_id')->unsigned();
             $table->integer('contact_id')->unsigned();
 
-
-            $table->foreign('contact_id', 'FK_RelVandorContact_Contact')
-                ->references('id')->on('contacts')
-                ->onDelete('no action')
-                ->onUpdate('no action');
-
-            $table->foreign('vendor_id', 'FK_RelVandorContact_Vendor')
-                ->references('id')->on('vendors')
-                ->onDelete('no action')
-                ->onUpdate('no action');
         });
     }
 

@@ -1,22 +1,23 @@
 <?php
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePaymentTable extends Migration
+class CreateOrderPaymentsTable extends Migration
 {
     /**
      * Run the migrations.
-     * @table payment
      *
      * @return void
      */
     public function up()
     {
-        Schema::create('payments', function (Blueprint $table) {
+        Schema::create('order_payments', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('order_payment_id')->unsigned();
-            $table->morphs('paymentable');
+            $table->decimal('total_payed', 19, 4);
+            $table->decimal('total_before_tax', 19, 4);
+            $table->decimal('total_after_tax', 19, 4);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }
@@ -26,8 +27,8 @@ class CreatePaymentTable extends Migration
      *
      * @return void
      */
-     public function down()
-     {
-       Schema::dropIfExists('payments');
-     }
+    public function down()
+    {
+        Schema::dropIfExists('order_payments');
+    }
 }

@@ -18,12 +18,7 @@ class CreateCreditpaymentsdetailsTable extends Migration
             $table->integer('credit_payment_id')->unsigned();
             $table->integer('PaymentNumber');
             $table->decimal('Amount', 19, 4);
-
-
-            $table->foreign('credit_payment_id', 'FK_CreditPaymentsDetails_CreditPayment')
-                ->references('id')->on('credit_payments')
-                ->onDelete('no action')
-                ->onUpdate('no action');
+            $table->timestamp('pay_date')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 

@@ -26,23 +26,7 @@ class CreateProductTable extends Migration
             $table->longText('description')->nullable()->default(null);
             $table->timestamps();
             $table->softDeletes();
-            
 
-
-            $table->foreign('dept_id', 'FK_Product_Department')
-                ->references('id')->on('departments')
-                ->onDelete('no action')
-                ->onUpdate('no action');
-
-            $table->foreign('group_id', 'FK_Product_Group')
-                ->references('id')->on('groups')
-                ->onDelete('no action')
-                ->onUpdate('no action');
-
-            $table->foreign('vendor_id', 'FK_Product_Vendor')
-                ->references('id')->on('vendors')
-                ->onDelete('no action')
-                ->onUpdate('no action');
         });
     }
 

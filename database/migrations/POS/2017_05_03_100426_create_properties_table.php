@@ -22,10 +22,6 @@ class CreatePropertiesTable extends Migration
             $table->boolean('mandatory')->default(false);
             $table->timestamps();
 
-            $table->foreign('type', 'FK_PType_PropertyType')
-                ->references('id')->on('property_types')
-                ->onDelete('no action')
-                ->onUpdate('no action');
         });
     }
 

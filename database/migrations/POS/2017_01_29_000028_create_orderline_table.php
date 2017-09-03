@@ -19,17 +19,6 @@ class CreateOrderlineTable extends Migration
             $table->double('quantity');
             $table->decimal('product_unit_price', 19, 4);
             $table->decimal('product_total_price', 19, 4);
-
-
-            $table->foreign('order_id', 'orderline_ordId')
-                ->references('id')->on('orders')
-                ->onDelete('no action')
-                ->onUpdate('no action');
-
-            $table->foreign('product_id', 'FK_OrderLine_Product')
-                ->references('id')->on('products')
-                ->onDelete('no action')
-                ->onUpdate('no action');
         });
     }
 

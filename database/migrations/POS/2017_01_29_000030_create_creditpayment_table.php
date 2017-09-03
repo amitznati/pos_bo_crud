@@ -16,7 +16,7 @@ class CreateCreditpaymentTable extends Migration
         Schema::create('credit_payments', function (Blueprint $table) {
             $table->increments('id');
             $table->char('card_end_with', 4);
-            $table->integer('number_of_payments')->default('1');
+            $table->integer('number_of_payments');
         });
     }
 

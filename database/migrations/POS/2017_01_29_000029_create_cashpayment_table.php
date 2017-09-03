@@ -16,7 +16,7 @@ class CreateCashpaymentTable extends Migration
         Schema::create('cash_payments', function (Blueprint $table) {
             $table->increments('id');
             $table->decimal('recieved_amount', 19, 4);
-            $table->decimal('change', 19, 4)->default('0.0000');
+            $table->decimal('change', 19, 4);
         });
     }
 

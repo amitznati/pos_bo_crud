@@ -19,11 +19,6 @@ class CreateZreportTable extends Migration
             $table->timestamp('reportDate')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->decimal('reprot_total_amount', 19, 4);
 
-
-            $table->foreign('employee_id', 'FK_ZReport_Employee')
-                ->references('id')->on('employees')
-                ->onDelete('no action')
-                ->onUpdate('no action');
         });
     }
 

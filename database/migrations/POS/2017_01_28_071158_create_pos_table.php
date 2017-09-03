@@ -20,10 +20,6 @@ class CreatePOSTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('store_id', 'FK_POS_Store')
-                ->references('id')->on('stores')
-                ->onDelete('no action')
-                ->onUpdate('no action');
         });
     }
 

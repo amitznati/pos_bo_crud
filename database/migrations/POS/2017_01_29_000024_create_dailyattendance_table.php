@@ -19,11 +19,6 @@ class CreateDailyattendanceTable extends Migration
             $table->dateTime('exitTime')->nullable()->default(null);
             $table->boolean('isPresent')->default(true);
 
-
-            $table->foreign('employee_id', 'dailyattendance_empId')
-                ->references('id')->on('employees')
-                ->onDelete('no action')
-                ->onUpdate('no action');
         });
     }
 
