@@ -40,7 +40,9 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition {{ config('backpack.base.skin') }} sidebar-mini">
+<body class="hold-transition {{ config('backpack.base.skin') }} @yield('sidebar-collapse') sidebar-mini">
+
+
     <!-- Site wrapper -->
     <div class="wrapper">
 
@@ -141,5 +143,6 @@
 
     <!-- JavaScripts -->
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    
 </body>
 </html>

@@ -14,6 +14,7 @@ class CreateDailyattendanceTable extends Migration
     public function up()
     {
         Schema::create('daily_attendance', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('employee_id')->unsigned();
             $table->timestamp('entryTime')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->dateTime('exitTime')->nullable()->default(null);

@@ -1,5 +1,6 @@
 @extends('pos/layout')
 
+
 @section('header')
     <section class="content-header">
       <h1>
@@ -12,7 +13,12 @@
 @endsection
 
 
+
+
 @section('content')
+
+    
+
     <div class="row">
         <div class="col-md-12">
             <div class="box box-default">
@@ -25,7 +31,32 @@
     </div>
     <div class="row">
     	<div class="col-md-12">
-    		<h1><a href="{{ url('pos/terminal')}}">Go To Store</a></h1>
+            <h1 id="go-to-store"><a href="#">Go To Store</a></h1>
+
+            <button id="demo">Enter/Exit Shift</button>
+
     	</div>
     </div>
+
+    
+
 @endsection
+
+
+@section('after_scripts')
+@include('pos.inc.dialogs')
+<script>
+    var openDialog = function(){
+        var modal = document.getElementById('myModal');
+        modal.style.display = "block";
+    }
+    $('#demo').click(function(){
+        $('#dialog_content').load('dialog/shift_type',openDialog);
+    });
+    $('#go-to-store').click(function(){
+        $('#dialog_content').load('dialog/select_employee',openDialog);
+    });
+</script>
+
+@endsection
+

@@ -8,6 +8,10 @@
 </style>
 @endsection
 
+@section('sidebar-collapse')
+sidebar-collapse
+@endsection
+
 @section('header')
     <section class="content-header">
       <h1>
@@ -41,6 +45,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
     <script src="{{asset('gridstack.js-master')}}/dist/gridstack.all.js"></script>
     <script src="{{asset('gridstack.js-master')}}/dist/jquery.ui.touch.js"></script>
+    @include('pos.terminal.pos_ko_models')
 
     <script type="text/javascript">
         ko.components.register('dashboard-grid', {
@@ -91,6 +96,7 @@
                 
                 this.widgets = ko.observableArray({!!$currentMenu->containsDisplayInfos!!});
                 this.currentMenu = ko.observable({!!$currentMenu!!});
+                this.currentOrder = ko.observable(new Order());
 
                 this.openMenu = function(menu){
                     //console.log(menu);
