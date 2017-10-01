@@ -19,6 +19,7 @@ sidebar-collapse
       </h1>
       <ol class="breadcrumb">
         <li><a href="{{ url('pos/home') }}">POS Home</a></li>
+        <li>{{$employee->person->full_name}}</li>
       </ol>
     </section>
 @endsection

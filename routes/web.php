@@ -50,5 +50,6 @@ Route::group([
     Route::get('home',['as' => 'pos.index', 'uses' => 'POSController@index']);
     Route::get('terminal',['as' => 'pos.terminal', 'uses' => 'POSController@terminal']);
     Route::get('dialog/{dialog?}',['as' => 'pos.dialog', 'uses' => 'POSController@dialog']);
+    Route::get('terminalWithEmployee/{empnum?}',['as' => 'pos.terminalWithEmployee', 'uses' => 'POSController@terminalWithEmployee']);
     Route::get('type_attendance',['as' => 'pos.type_attendance', 'uses' => 'POSController@typeAttendance']);
 });

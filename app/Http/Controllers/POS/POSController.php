@@ -20,9 +20,31 @@ class POSController extends Controller
 
     public function terminal(Request $request)
     {xdebug_break();
+        $empid = \Session::get('empid');
+        $employee = null;
+        if($empid)
+        {
+            $employee = Employee::find($empid)->load('person');
+        }
+        else
+        {
+            \Alert::error("Employee was not found!")->flash();
+            return redirect('pos/home');
+        }
     	$menus = Menu::all()->load('containsDisplayInfos');
     	$currentMenu = $menus[0];
-    	return view('pos.terminal.pos-terminal')->withMenus($menus)->with('currentMenu', $currentMenu);
+    	
+    	$data = [];
+    	$data['menus'] = $menus;
+    	$data['currentMenu'] = $currentMenu;
+    	$data['employee'] = $employee;
+    	return view('pos.terminal.pos-terminal')->with($data);
+    }
+
+    public function terminalWithEmployee($empid)
+    {
+        \Session::put('empid',$empid);
+        return redirect('pos/terminal');
     }
 
     public function dialog($dialog)
