@@ -41,7 +41,7 @@ class Vendor extends Model
     ];
 
     public static $rules = [
-        'company_name' => 'required|unique|max:255',
+        'company_name' => 'required|unique:vendors|max:255',
     ];
     //protected $table = 'vendors';
     //protected $primaryKey = 'id';

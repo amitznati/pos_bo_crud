@@ -66,4 +66,6 @@ class Property extends Model
     {
         return $this->morphTo('propertyable');
     }
+
+    
 }

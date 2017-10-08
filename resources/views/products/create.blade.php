@@ -27,7 +27,7 @@
 		@endif
 
 		@include('crud::inc.grouped_errors')
-
+			
 		  {!! Form::open(array('url' => $crud->route, 'method' => 'post', 'files'=>true)) !!}
 		  <div class="box">
 

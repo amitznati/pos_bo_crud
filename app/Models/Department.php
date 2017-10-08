@@ -40,7 +40,7 @@ class Department extends Model
     ];
 
     public static $rules = [
-        'name' => 'required|unique|max:255',
+        'name' => 'required|unique:departments|max:255',
     ];
     //protected $table = 'departments';
     //protected $primaryKey = 'id';

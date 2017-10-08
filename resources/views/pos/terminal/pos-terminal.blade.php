@@ -62,8 +62,8 @@ sidebar-collapse
                             if (grid == null) {
                                 grid = $(componentInfo.element).find('.grid-stack').gridstack({
                                     auto: false,
-                                    float: true,
-                                    height: 7,
+                                    float: false,
+                                    height: 5,
 
                                 }).data('gridstack');
                             }

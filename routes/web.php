@@ -28,6 +28,8 @@ Route::group([
 ], function() {
     // your CRUD resources and other admin routes here
     CRUD::resource('product', 'ProductCrudController');
+    Route::get('import/{crud?}/{type?}',['as' => 'admin.import', 'uses' => 'ImportController@importDialog']);
+    Route::post('import',['as' => 'admin.import.save', 'uses' => 'ImportController@import']);
     CRUD::resource('department', 'DepartmentCrudController');
     CRUD::resource('group', 'GroupCrudController');
     CRUD::resource('vendor', 'VendorCrudController');

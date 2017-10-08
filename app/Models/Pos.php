@@ -31,7 +31,7 @@ class Pos extends Model
         'store_id' => 'integer',
     ];
     public static $rules = [
-        'name' => 'required|unique|max:255',
+        'name' => 'required|unique:pos|max:255',
     ];
     /*
     |--------------------------------------------------------------------------

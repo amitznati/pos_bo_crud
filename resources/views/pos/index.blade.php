@@ -44,12 +44,7 @@
 
 
 @section('after_scripts')
-@include('pos.inc.dialogs')
 <script>
-    var openDialog = function(){
-        var modal = document.getElementById('myModal');
-        modal.style.display = "block";
-    }
     $('#demo').click(function(){
         $('#dialog_content').load('dialog/shift_type',openDialog);
     });

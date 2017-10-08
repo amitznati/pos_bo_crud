@@ -40,7 +40,7 @@ class Group extends Model
     ];
 
     public static $rules = [
-        'name' => 'required|unique|max:255',
+        'name' => 'required|unique:groups|max:255',
     ];
     //protected $table = 'groups';
     //protected $primaryKey = 'id';

@@ -55,7 +55,7 @@ class Product extends Model
     ];
 
     public static $rules = [
-        'name' => 'required|unique|max:255',
+        'name' => 'required|unique:products|max:255',
         'sale_price' => 'required',
         'dept_id' => 'required',
         'group_id' => 'required'
@@ -67,7 +67,7 @@ class Product extends Model
 	|--------------------------------------------------------------------------
 	*/
 
-    /*
+        /*
 	|--------------------------------------------------------------------------
 	| RELATIONS
 	|--------------------------------------------------------------------------
@@ -113,6 +113,7 @@ class Product extends Model
     {
         return $this->morphMany(\App\Models\Property::class, 'propertyable');
     }
+
 	
     /*
 	|--------------------------------------------------------------------------

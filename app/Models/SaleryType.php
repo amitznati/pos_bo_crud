@@ -37,7 +37,7 @@ class SaleryType extends Model
     ];
 
     public static $rules = [
-        'name' => 'required|unique|max:255',
+        'name' => 'required|unique:salery_types|max:255',
     ];
     /*
     |--------------------------------------------------------------------------

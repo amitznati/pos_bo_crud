@@ -8,9 +8,6 @@
     {{-- Encrypted CSRF token for Laravel, in order for Ajax requests to work --}}
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-    <title>
-      {{ isset($title) ? $title.' :: '.config('backpack.base.project_name').' Admin' : config('backpack.base.project_name').' Admin' }}
-    </title>
     @yield('before_styles')
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -30,9 +27,46 @@
 
     @yield('after_styles')
     <style>
-        th {text-align: {{$left}}; }
-        /*.form-group{float: {{$left}}; }*/
-    </style>
+      /* The Modal (background) */
+      .modal {
+          display: none; /* Hidden by default */
+          position: fixed; /* Stay in place */
+          /*z-index: 1; /* Sit on top */
+          padding-top: 100px; /* Location of the box */
+          left: 0;
+          top: 0;
+          width: 100%; /* Full width */
+          height: 100%; /* Full height */
+          overflow: auto; /* Enable scroll if needed */
+          background-color: rgb(0,0,0); /* Fallback color */
+          background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      }
+
+      /* Modal Content */
+      .modal-content {
+          background-color: #fefefe;
+          margin: auto;
+          padding: 20px;
+          border: 1px solid #888;
+          left: 100px;
+          width: 80%;
+      }
+
+      /* The Close Button */
+      .close {
+          color: #aaaaaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+          color: #000;
+          text-decoration: none;
+          cursor: pointer;
+      }
+      </style>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -40,66 +74,18 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition {{ config('backpack.base.skin') }} @yield('sidebar-collapse') sidebar-mini">
+<body>
 
 
-    <!-- Site wrapper -->
-    <div class="wrapper">
+    <div id="myModal" class="modal">
 
-      <header class="main-header">
-        <!-- Logo -->
-        <a href="{{ url('') }}" class="logo">
-          <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini">{!! config('backpack.base.logo_mini') !!}</span>
-          <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg">{!! config('backpack.base.logo_lg') !!}</span>
-
-        </a>
-        <!-- Header Navbar: style can be found in header.less -->
-        <nav class="navbar navbar-static-top" role="navigation">
-          <!-- Sidebar toggle button-->
-          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-            <span class="sr-only">{{ trans('backpack::base.toggle_navigation') }}</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-
-          @include('pos.inc.menu')
-        </nav>
-      </header>
-
-      <!-- =============================================== -->
-
-      @include('pos.inc.sidebar')
-
-      <!-- =============================================== -->
-
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-         @yield('header')
-
-        <!-- Main content -->
-        <section class="content">
-
-          @yield('content')
-
-        </section>
-        <!-- /.content -->
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+          <div id="dialog_content"></div>
       </div>
-      <!-- /.content-wrapper -->
 
-      <footer class="main-footer">
-        @if (config('backpack.base.show_powered_by'))
-            <div class="pull-{!! $right !!}" hidden-xs">
-              {{ trans('backpack::base.powered_by') }} <a target="_blank" href="http://laravelbackpack.com">Laravel BackPack</a>
-            </div>
-        @endif
-        {{ trans('backpack::base.handcrafted_by') }} <a target="_blank" href="{{ config('backpack.base.developer_link') }}">{{ config('backpack.base.developer_name') }}</a>.
-      </footer>
     </div>
-    <!-- ./wrapper -->
 
 
     @yield('before_scripts')
@@ -125,24 +111,31 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+    </script>
 
-        // Set active state on menu element
-        var current_url = "{{ url(Route::current()->getUri()) }}";
-        $("ul.sidebar-menu li a").each(function() {
-          if ($(this).attr('href').startsWith(current_url) || current_url.startsWith($(this).attr('href')))
-          {
-            $(this).parents('li').addClass('active');
+    <script>
+      // Get the modal
+      var modal = document.getElementById('myModal');
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+          modal.style.display = "none";
+          
+      }
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+          if (event.target == modal) {  
+              modal.style.display = "none";
           }
-        });
-
-        var openDialog = function(){
-            var modal = document.getElementById('myModal');
-            modal.style.display = "block";
-        }
+      }
     </script>
 
     @include('backpack::inc.alerts')
-    @include('pos.inc.dialogs')
+
     @yield('after_scripts')
     @yield('after_scripts2')
 

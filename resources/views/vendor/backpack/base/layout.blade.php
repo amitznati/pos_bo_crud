@@ -132,12 +132,19 @@
             $(this).parents('li').addClass('active');
           }
         });
+
+        var openDialog = function(){
+            var modal = document.getElementById('myModal');
+            modal.style.display = "block";
+        }
     </script>
 
     @include('backpack::inc.alerts')
 
+    @include('pos.inc.dialogs')
+    @yield('dialog-script')
     @yield('after_scripts')
-    @yield('after_scripts2')
+    
 
     <!-- JavaScripts -->
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}

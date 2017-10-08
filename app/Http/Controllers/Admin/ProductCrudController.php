@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Illuminate\Support\Facades\View;
+use Illuminate\Http\Request;
 
 
 // VALIDATION: change the requests to match your own file names if you need form validation
@@ -137,11 +138,14 @@ class ProductCrudController extends CrudController
 
         // ------ CRUD BUTTONS
         // possible positions: 'beginning' and 'end'; defaults to 'beginning' for the 'line' stack, 'end' for the others;
-        // $this->crud->addButton($stack, $name, $type, $content, $position); // add a button; possible types are: view, model_function
+        // $this->crud->addButton('top', 'import', 'button', '', ''); // add a button; possible types are: view, model_function
         // $this->crud->addButtonFromModelFunction($stack, $name, $model_function_name, $position); // add a button whose HTML is returned by a method in the CRUD model
         // $this->crud->addButtonFromView($stack, $name, $view, $position); // add a button whose HTML is in a view placed at resources\views\vendor\backpack\crud\buttons
+         $this->crud->addButtonFromView('top', 'import', 'import_csv', 'beginning'); // add a button whose HTML is in a view placed at resources\views\vendor\backpack\crud\buttons
         // $this->crud->removeButton($name);
         // $this->crud->removeButtonFromStack($name, $stack);
+        //$this->crud->addButtonFromModelFunction('stack_name', 'button_name', 'model_function_name');
+        //$this->crud->addButtonFromModelFunction('top', 'open_google', 'openGoogle', 'beginning'); // add a button whose HTML is returned by a method in the CRUD model
 
         // ------ CRUD ACCESS
         //$this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete','show']);
@@ -170,7 +174,7 @@ class ProductCrudController extends CrudController
         // ------ DATATABLE EXPORT BUTTONS
         // Show export to PDF, CSV, XLS and Print buttons on the table view.
         // Does not work well with AJAX datatables.
-        // $this->crud->enableExportButtons();
+        $this->crud->enableExportButtons();
 
         // ------ ADVANCED QUERIES
         // $this->crud->addClause('active');
@@ -185,6 +189,8 @@ class ProductCrudController extends CrudController
         // $this->crud->groupBy();
         // $this->crud->limit();
     }
+
+    
 
     private function saveProperties($properties,$id)
     {
@@ -257,5 +263,11 @@ class ProductCrudController extends CrudController
         $this->data['departments'] = Department::all();
         $this->data['property_types'] = PropertyType::all();
         return parent::edit($id);
+    }
+
+    public function import(Request $request)
+    {
+        xdebug_break();
+        return redirect('admin/product');
     }
 }
