@@ -23,6 +23,9 @@ class Menu extends Model
     // public $timestamps = false;
     protected $guarded = ['id'];
     protected $fillable = ['name'];
+    public static $sampleModel =[
+        'name' => 'sample Menu', 
+    ];
     // protected $hidden = [];
     protected $dates = ['deleted_at'];
     

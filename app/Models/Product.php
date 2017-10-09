@@ -35,6 +35,19 @@ class Product extends Model
         'brand',
         'description'
     ];
+    
+    public static $sampleModel =[
+        'name' => 'sample Product',
+        'dept_id' => 1,
+        'group_id' => 1,
+        'vendor_id' => 1,
+        'sale_price' => 99.99,
+        'bay_price' => 59.99,
+        'barcode' => '1234567890',
+        'brand' => 'brand sample',
+        'description' => 'this is a sample product for import.'
+        
+    ];
 	
     /**
      * The attributes that should be casted to native types.
@@ -61,6 +74,8 @@ class Product extends Model
         'group_id' => 'required'
     ];
 
+    
+        
     /*
 	|--------------------------------------------------------------------------
 	| FUNCTIONS

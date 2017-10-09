@@ -27,6 +27,10 @@ class Group extends Model
         'name',
         'department_id'
     ];
+    public static $sampleModel =[
+        'name' => 'sample Group',
+        'department_id' => 1,  
+    ];
 
     /**
      * The attributes that should be casted to native types.

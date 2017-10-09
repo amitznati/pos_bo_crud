@@ -19,79 +19,6 @@ class Person extends Model
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
-//     public static $create_fields = [
-//     		[
-//     				'name' => 'first_name',
-//     				'label' => trans('pos.people.person.first_name'),
-//     				'type' => 'Text'
-//     		],
-//     		[
-//     				'name' => 'last_name',
-//     				'label' => trans('pos.people.person.last_name'),
-//     				'type' => 'Text'
-//     		],
-//     		[
-//     				'name' => 'full_name',
-//     				'label' => trans('pos.people.person.full_name'),
-//     				'type' => 'Text'
-//     		],
-//     		[
-//     				'name' => 'birthday',
-//     				'label' => trans('pos.people.person.birthday'),
-//     				'type' => 'date'
-//     		],
-//     		[
-//     				'name' => 'phone',
-//     				'label' => trans('pos.people.person.phone'),
-//     				'type' => 'number'
-//     		],
-//     		[
-//     				'name' => 'email',
-//     				'label' => trans('pos.people.person.email'),
-//     				'type' => 'email'
-//     		],
-//     		[
-//     				'name' => 'identifier',
-//     				'label' => trans('pos.people.person.identifier'),
-//     				'type' => 'Text'
-//     		],
-    		
-//     ];
-    
-//     public static $show_fields = [
-//         [
-//             'function_name' => 'personObj', 
-//             'label' => trans('pos.people.person.first_name'), 
-//             'type' => 'model_function_attribute',
-//             'attribute' => 'first_name'
-//         ],
-//         [
-//             'function_name' => 'personObj', 
-//             'label' => trans('pos.people.person.last_name'), 
-//             'type' => 'model_function_attribute',
-//             'attribute' => 'last_name'
-//         ],
-//         [
-//             'function_name' => 'personObj', 
-//             'label' => trans('pos.people.person.birthday'), 
-//             'type' => 'model_function_attribute',
-//             'attribute' => 'birthday'
-//         ],
-//         [
-//             'function_name' => 'personObj', 
-//             'label' => trans('pos.people.person.email'),  
-//             'type' => 'model_function_attribute',
-//             'attribute' => 'email'
-//         ],
-//         [
-//             'function_name' => 'personObj', 
-//             'label' => trans('pos.people.person.phone'),  
-//             'type' => 'model_function_attribute',
-//             'attribute' => 'phone'
-//         ],
-
-
-//     ];
     protected $dates = ['deleted_at'];
 
 
@@ -106,6 +33,19 @@ class Person extends Model
         'identifier',
         'personable_id',
         'personable_type'
+    ];
+
+    public static $sampleModel =[
+        'first_name'       => 'Amit',
+        'last_name'        => 'Znati',
+        'full_name'        => 'Amit Znati',
+        'birthday'         => '1982-07-18 00:00:00',
+        'phone'            => '050-6898993' 
+        'email'            => 'amit.znati@gmail.com',
+        'address_id'       => 1,
+        'identifier'       => 'unique',
+        'personable_id'    => 1,
+        'personable_type'  => 'App\Models\Employee'
     ];
 
     /**

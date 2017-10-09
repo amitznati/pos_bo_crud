@@ -1,5 +1,7 @@
 <h1>Import {{$crud}}</h1>
 
+<a  href="import/sample/{{ $crud }}/csv" class="btn btn-primary ladda-button" data-style="zoom-in"><span class="ladda-label"><i class="fa fa-download"></i> Download Sample </span></a>
+
 {{Form::open(array('route' => 'admin.import.save','files'=>true,'class' => 'form','method' => 'post','enctype'=>"multipart/form-data"))}}
 
 <div class="form-group">

@@ -29,6 +29,9 @@ class Vendor extends Model
     public $fillable = [
         'company_name'
     ];
+    public static $sampleModel =[
+        'name' => 'sample Vendor', 
+    ];
 
     /**
      * The attributes that should be casted to native types.

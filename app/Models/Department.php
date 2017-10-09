@@ -28,6 +28,9 @@ class Department extends Model
     public $fillable = [
         'name'
     ];
+    public static $sampleModel =[
+        'name' => 'sample Department'
+    ];
 
     /**
      * The attributes that should be casted to native types.

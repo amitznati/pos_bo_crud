@@ -22,6 +22,9 @@ class Store extends Model
     //public $timestamps = false;
     protected $guarded = ['id'];
     protected $fillable = ['name'];
+    public static $sampleModel =[
+        'name' => 'sample Store', 
+    ];
     // protected $hidden = [];
     protected $dates = ['deleted_at'];
 

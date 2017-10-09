@@ -22,6 +22,10 @@ class Pos extends Model
     //public $timestamps = false;
     protected $guarded = ['id'];
     protected $fillable = ['name','store_id'];
+    public static $sampleModel =[
+        'name' => 'sample Pos',
+        'store_id' =>1 
+    ];
     // protected $hidden = [];
     protected $dates = ['deleted_at'];
 
