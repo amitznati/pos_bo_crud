@@ -40,7 +40,7 @@ class Person extends Model
         'last_name'        => 'Znati',
         'full_name'        => 'Amit Znati',
         'birthday'         => '1982-07-18 00:00:00',
-        'phone'            => '050-6898993' 
+        'phone'            => '050-6898993',
         'email'            => 'amit.znati@gmail.com',
         'address_id'       => 1,
         'identifier'       => 'unique',
