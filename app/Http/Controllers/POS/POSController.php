@@ -19,7 +19,7 @@ class POSController extends Controller
     }
 
     public function terminal(Request $request)
-    {xdebug_break();
+    {
         $empid = \Session::get('empid');
         $employee = null;
         if($empid)

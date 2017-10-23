@@ -114,6 +114,9 @@
     <script src="{{ asset('vendor/adminlte'.$localeStr.'/') }}/plugins/fastclick/fastclick.js"></script>
     <script src="{{ asset('vendor/adminlte'.$localeStr.'/') }}/dist/js/app.min.js"></script>
 
+    <script src="{{ asset('vendor/adminlte/plugins/datatables/') }}/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('vendor/adminlte/plugins/datatables/') }}/dataTables.bootstrap.min.js"></script>
+
     {{-- page script --}}
     <script type="text/javascript">
         // To make Pace works on Ajax calls
@@ -140,6 +143,65 @@
             modal.style.display = "block";
         }
     </script>
+    <script>
+ $(function () {
+  /* Formatting function for row details - modify as you need */
+  function format ( d ) {
+      // `d` is the original data object for the row
+      return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+          '<tr>'+
+              '<td>Full name:</td>'+
+              '<td>'+d.name+'</td>'+
+          '</tr>'+
+          '<tr>'+
+              '<td>Extension number:</td>'+
+              '<td>'+d.extn+'</td>'+
+          '</tr>'+
+          '<tr>'+
+              '<td>Extra info:</td>'+
+              '<td>And any further details here (images etc)...</td>'+
+          '</tr>'+
+      '</table>';
+  }
+  
+  $("#basket-table").dataTable( {
+      "searching": false,
+      "lengthChange": false,
+      "pageLength": 5,
+      "info": false,
+      "columns": [
+          {
+              "className":      'details-control',
+              "orderable":      false,
+              "data":           null,
+              "defaultContent": '<i class="fa fa-plus-square" aria-hidden="true"></i>'
+          },
+          { "data": "name" },
+          { "data": "quantity" },
+          { "data": "unit_price" },
+          { "data": "total" }
+      ],
+      "order": [[1, 'asc']]
+    });
+
+  // Add event listener for opening and closing details
+    $('#example tbody').on('click', 'td.details-control', function () {
+        var tr = $(this).closest('tr');
+        var row = table.row( tr );
+ 
+        if ( row.child.isShown() ) {
+            // This row is already open - close it
+            row.child.hide();
+            tr.removeClass('shown');
+        }
+        else {
+            // Open this row
+            row.child( format(row.data()) ).show();
+            tr.addClass('shown');
+        }
+    });
+});
+</script>
 
     @include('backpack::inc.alerts')
     @include('pos.inc.dialogs')
