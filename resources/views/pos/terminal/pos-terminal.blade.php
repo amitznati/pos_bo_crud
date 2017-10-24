@@ -58,7 +58,6 @@ sidebar-collapse
                         this.widgets = controller.widgets;
                         
                         this.afterAddWidget = function (items) {
-                          console.log('here')
                             if (grid == null) {
                                 grid = $(componentInfo.element).find('.grid-stack').gridstack({
                                     auto: false,

@@ -27,12 +27,13 @@
             <div class="box-body">
             <table id="basket-table" class="table table-bordered table-hover dataTable">
                 <thead>
-                	<th></th>
-                    <th>Name</th>
-                    <th>Qnt.</th>
-                    <th> <small>/unit </small>Price</th>
-                    <th>Total</th>
-                    
+                	<tr>
+	                	<th></th>
+	                    <th>Name</th>
+	                    <th>Quantity</th>
+	                    <th> <small>/unit </small>Price</th>
+	                    <th>Total</th>
+                    </tr>
                 </thead>
                 
                 <tbody>
