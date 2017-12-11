@@ -40,7 +40,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition {{ config('backpack.base.skin') }} @yield('sidebar-collapse') sidebar-mini">
+<body class="layout-top-nav {{ config('backpack.base.skin') }} ">
 
 
     <!-- Site wrapper -->
@@ -58,12 +58,7 @@
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
-          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-            <span class="sr-only">{{ trans('backpack::base.toggle_navigation') }}</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
+          
 
           @include('pos.inc.menu')
         </nav>
@@ -71,7 +66,7 @@
 
       <!-- =============================================== -->
 
-      @include('pos.inc.sidebar')
+     
 
       <!-- =============================================== -->
 
@@ -144,87 +139,7 @@
         }
     </script>
 
-<style type="text/css">
-      td.details-control {
-            text-align:center;
-            color:forestgreen;
-            cursor: pointer;
-        }
-        tr.shown td.details-control {
-            text-align:center; 
-            color:red;
-        }
-</style>
 
-    <script>
-     $(function () {
-      /* Formatting function for row details - modify as you need */
-      function format ( d ) {
-          // `d` is the original data object for the row
-          return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
-              '<tr>'+
-                  '<td>Full name:</td>'+
-                  '<td>'+d.name+'</td>'+
-              '</tr>'+
-              '<tr>'+
-                  '<td>Extension number:</td>'+
-                  '<td>'+d.quantity+'</td>'+
-              '</tr>'+
-              '<tr>'+
-                  '<td>Extra info:</td>'+
-                  '<td>And any further details here (images etc)...</td>'+
-              '</tr>'+
-          '</table>';
-      }
-
-  var table = $("#basket-table").DataTable( {
-      "searching": false,
-      "lengthChange": false,
-      "pageLength": 5,
-      "info": false,
-
-      "columns": [
-          {
-               "className": 'details-control',
-               "orderable": false,
-               "data": null,
-               "defaultContent": '',
-               "render": function () {
-                   return '<i class="fa fa-plus-square" aria-hidden="true"></i>';
-               },
-               width:"15px"
-           },
-          { "data": "name" },
-          { "data": "quantity" },
-          { "data": "unit_price" },
-          { "data": "total" }
-      ],
-      "order": [[1, 'asc']]
-    });
-
-  // Add event listener for opening and closing details
-    $('#basket-table tbody').on('click', 'td.details-control', function () {
-        var tr = $(this).closest('tr');
-       var tdi = tr.find("i.fa");
-       var row = table.row(tr);
-
-       if (row.child.isShown()) {
-           // This row is already open - close it
-           row.child.hide();
-           tr.removeClass('shown');
-           tdi.first().removeClass('fa-minus-square');
-           tdi.first().addClass('fa-plus-square');
-       }
-       else {
-           // Open this row
-           row.child(format(row.data())).show();
-           tr.addClass('shown');
-           tdi.first().removeClass('fa-plus-square');
-           tdi.first().addClass('fa-minus-square');
-       }
-    });
-});
-</script>
 
     @include('backpack::inc.alerts')
     @include('pos.inc.dialogs')

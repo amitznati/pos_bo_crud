@@ -1,14 +1,18 @@
 {
-    "folders":
-    [
-        {
-            "follow_symlinks": true,
-            "path": "."
-        }
-    ],
-    "settings": {
-        "xdebug": {
-             "url": "http://localhost:8000/admin",
-        }
-    }
+	"folders":
+	[
+		{
+			"path": "."
+		},
+		{
+			"path": "C:\\Users\\AmitZ\\Documents\\GitHub\\springboot-adminlte-thymeleaf-master"
+		}
+	],
+	"settings":
+	{
+		"xdebug":
+		{
+			"url": "http://localhost:8000/admin"
+		}
+	}
 }
